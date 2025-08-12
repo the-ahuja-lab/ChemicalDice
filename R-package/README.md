@@ -37,17 +37,13 @@ use_condaenv("chemdice", required = TRUE)
 ### Batch Feature Extraction from CSV
 Your CSV must have a column named `SMILES`.
 ```r
-features <- collect_features_from_csv("smiles.csv")
+features <- collect_features_from_csv("smiles.csv",key = "API_KEY")
 ```
 
 - The function will validate all SMILES, overwrite the CSV with canonical SMILES, and stream the file to the server.
 - Returns a numeric matrix of features (rows = molecules, columns = features).
 
-## Example
-```r
-# Extract features from a CSV
-features <- collect_features_from_csv("smiles.csv",key="YOUR_API_KEY")
+
 ```
 ## License
 MIT
-

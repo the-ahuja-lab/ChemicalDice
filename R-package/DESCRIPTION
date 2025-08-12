@@ -1,10 +1,10 @@
-Package: ChemicalDiceR
+Package: ChemicalDice
 Type: Package
-Title: ChemicalDice R API
+Title: ChemicalDice  R package
 Version: 0.1.0
-Author: Your Name
-Maintainer: Your Email <your@email.com>
-Description: R interface for ChemicalDice functionality.
+Author: Suvendu Kumar
+Maintainer: suvenduk@iiid.ac.in
+Description: R package for ChemicalDice functionality.
 License: MIT
 Encoding: UTF-8
 LazyData: true
