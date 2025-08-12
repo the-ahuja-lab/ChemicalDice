@@ -46,7 +46,8 @@ features <- collect_features_from_csv("smiles.csv")
 ## Example
 ```r
 # Extract features from a CSV
-features <- collect_features_from_csv("smiles.csv")
+features <- collect_features_from_csv("smiles.csv",key="YOUR_API_KEY")
 ```
 ## License
 MIT
+
