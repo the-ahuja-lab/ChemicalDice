@@ -1,0 +1,63 @@
+Metadata-Version: 2.4
+Name: ChemicalDice
+Version: 0.8.2
+Summary: ChemicalDice: Transforming cheminformatics and bioinformatics with advanced data fusion analysis.
+License: MIT
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/x-rst
+License-File: LICENSE
+Provides-Extra: docs
+Requires-Dist: sphinx; extra == "docs"
+Requires-Dist: sphinx-gallery; extra == "docs"
+Requires-Dist: sphinx-rtd-theme; extra == "docs"
+Requires-Dist: numpy; extra == "docs"
+Requires-Dist: pandas; extra == "docs"
+Requires-Dist: tqdm; extra == "docs"
+Dynamic: license-file
+
+Chemical Dice
+=============
+
+ChemicalDice is a deep learning featurizer developed using unsupervised 
+learning on the ChEMBL database. It captures six distinct molecular 
+representations: quantum descriptors, bioactivity profiles, language model
+embeddings, graph-based features, physicochemical properties, and 
+2D image-based features. ChemicalDice takes SMILES strings as input and 
+generates comprehensive embeddings for each molecule, enabling robust and 
+versatile molecular characterization for downstream cheminformatics and 
+bioinformatics applications.
+
+
+
+Install packages
+----------------
+
+To use the **ChemicalDice** package, you need to install it along with
+its dependencies. You can install ChemicalDice and its dependencies
+using the following commands:
+
+.. code:: bash
+
+   pip install numpy pandas tqdm rdkit 
+   pip install -i https://test.pypi.org/simple/ ChemicalDice
+
+
+Calculation of Embeddings
+--------------------------
+
+.. code:: python
+
+   # SMILES column should be present in the CSV file.
+   #example CSV file:
+   # SMILES,other_column1,other_column2
+   # CC(=O)OC1=CC=CC=C1C(=O)O,1,2
+   # C1=CC=CC=C1,3,4
+   # C1=CC=C(C=C1)C(=O)O,1,2
+   from ChemicalDice import  smiles_to_embeddings
+   embeddings = smiles_to_embeddings.collect_features_from_csv(
+      filepath="smiles.csv",
+      key = "API_KEY",  # Replace with your actual API key
+   )

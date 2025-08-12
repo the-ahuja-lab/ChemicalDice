@@ -1,0 +1,13 @@
+LICENSE
+MANIFEST.in
+Readme.rst
+pyproject.toml
+ChemicalDice/__init__.py
+ChemicalDice/smiles_to_embeddings.py
+ChemicalDice.egg-info/PKG-INFO
+ChemicalDice.egg-info/SOURCES.txt
+ChemicalDice.egg-info/dependency_links.txt
+ChemicalDice.egg-info/entry_points.txt
+ChemicalDice.egg-info/requires.txt
+ChemicalDice.egg-info/top_level.txt
+test/test.py
