@@ -88,7 +88,8 @@ collect_features_from_csv <- function(filepath, key = NULL) {
   
   # Apply the processing function to the SMILES column
   # Note: `lapply` returns a list, so we unlist it back to a vector
-  df_data[, SMILES := unlist(lapply(SMILES, process_smiles))]
+  #   df_data[, SMILES := unlist(lapply(SMILES, process_smiles))]
+  df_data$SMILES <- unlist(lapply(df_data$SMILES, process_smiles))
   
   # Check for invalid entries (which we defined as NA in our function)
   num_invalid <- sum(is.na(df_data$SMILES))
