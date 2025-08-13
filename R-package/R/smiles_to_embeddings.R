@@ -4,6 +4,8 @@
 library(httr)
 library(progress)
 library(jsonlite)
+library(data.table)
+library(reticulate)
 
 # --- Configuration (must match the server) ---
 BATCH_SIZE <- 32
@@ -12,24 +14,6 @@ NUM_FEATURES <- 8192 # Assuming this is your feature size
 FLOAT_SIZE_BYTES <- 4
 DTYPE_R <- "numeric" # The 'what' argument for readBin
 
-# --- Placeholder for SMILES processing ---
-# You must replace this with your actual R logic for validating
-# and canonicalizing SMILES strings. This could involve calling a
-# command-line tool or using an R chemistry package like 'rcdk'.
-# process_smiles <- function(smiles_string) {
-#   # If the SMILES is valid, return the canonical version.
-#   # If not, return NA.
-#   # This is a placeholder - IT DOES NOT DO REAL VALIDATION.
-#   if (is.character(smiles_string) && nchar(smiles_string) > 2) {
-#     return(toupper(smiles_string)) # Example: return canonical SMILES
-#   } else {
-#     return(NA_character_) # Return NA for invalid SMILES
-#   }
-# }
-
-# Load the reticulate library
-# library(reticulate)
-# py_require("rdkit")
 
 # Before you run the function, you might need to tell reticulate which
 # Python environment to use (the one where RDKit is installed).
@@ -89,7 +73,7 @@ collect_features_from_csv <- function(filepath, key = NULL) {
   # Apply the processing function to the SMILES column
   # Note: `lapply` returns a list, so we unlist it back to a vector
   #   df_data[, SMILES := unlist(lapply(SMILES, process_smiles))]
-  rdkit <- import("rdkit.Chem", convert = TRUE)
+  
   df_data$SMILES <- unlist(lapply(df_data$SMILES, process_smiles))
   
   # Check for invalid entries (which we defined as NA in our function)
@@ -131,7 +115,7 @@ collect_features_from_csv <- function(filepath, key = NULL) {
   
   # --- 3. Send Request and Collect Streamed Data ---
   
-  message(paste("Sent", basename(filepath), "to", URL, ". Receiving stream..."))
+  message(paste("Sent", basename(filepath), "to server. Receiving stream..."))
   
   tryCatch({
     res <- POST(
