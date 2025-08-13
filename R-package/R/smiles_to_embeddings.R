@@ -73,7 +73,7 @@ process_smiles <- function(smiles_string) {
 
 
 # --- Main Function ---
-collect_features_from_csv2 <- function(filepath, key = NULL) {
+collect_features_from_csv <- function(filepath, key = NULL) {
   
   # --- 1. Pre-process and Validate the Input CSV ---
   library(data.table)
