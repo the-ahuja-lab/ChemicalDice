@@ -13,7 +13,7 @@ This package provides an R interface to validate, canonicalize, and batch-embed 
 ### System Requirements
 - R (>= 4.0)
 - Python (with RDKit installed)
-- The following R packages: `httr`, `data.table`, `progress`, `jsonlite`, `reticulate`
+- The following R packages: `httr`, `data.table`, `progress`, `jsonlite`, `reticulate`, `curl`
 
 ### Install R dependencies
 ```r
@@ -47,6 +47,7 @@ features <- collect_features_from_csv("smiles.csv",key = "API_KEY")
 
 - The function will validate all SMILES, overwrite the CSV with canonical SMILES, and stream the file to the server.
 - Returns a numeric matrix of features (rows = molecules, columns = features).
+
 
 
 
