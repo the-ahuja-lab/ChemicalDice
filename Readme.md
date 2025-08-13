@@ -9,7 +9,7 @@ versatile molecular characterization for downstream cheminformatics and
 bioinformatics applications.
 
 ChemicalDice is available as both Python and R packages, making it useful
-for both community and enterprise users.
+for all users.
 
 [Get Started with ChemicalDice Python](https://github.com/the-ahuja-lab/ChemicalDice/tree/main/R-package)
 
