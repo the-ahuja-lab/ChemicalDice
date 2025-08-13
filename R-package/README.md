@@ -28,7 +28,7 @@ You must have Python and RDKit installed. The easiest way is via conda:
 conda create -n chemicaldice python=3.9 rdkit -c conda-forge
 ```
 
-In R, point reticulate to your conda environment:
+In R, point reticulate to your conda environment and import rdkit:
 ```r
 library(reticulate)
 use_condaenv("chemicaldice", required = TRUE)
@@ -47,6 +47,7 @@ features <- collect_features_from_csv("smiles.csv",key = "API_KEY")
 
 - The function will validate all SMILES, overwrite the CSV with canonical SMILES, and stream the file to the server.
 - Returns a numeric matrix of features (rows = molecules, columns = features).
+
 
 
 
