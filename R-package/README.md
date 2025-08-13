@@ -6,7 +6,7 @@ representations: quantum descriptors, bioactivity profiles, language model embed
 versatile molecular characterization for downstream cheminformatics and bioinformatics applications.
 
 ## Overview
-This package provides an R interface to validate, canonicalize, and batch-embed SMILES strings using a remote ChemicalDice server. It uses RDKit (via reticulate) for SMILES validation and canonicalization, and streams CSV files to a server for feature extraction.
+This package provides an R interface to validate, canonicalize, and make embeddings from SMILES using ChemicalDice API. It uses RDKit (via reticulate) for SMILES validation and canonicalization, and streams CSV files for feature extraction.
 
 ## Installation
 
@@ -47,6 +47,7 @@ features <- collect_features_from_csv("smiles.csv",key = "API_KEY")
 
 - The function will validate all SMILES, overwrite the CSV with canonical SMILES, and stream the file to the server.
 - Returns a numeric matrix of features (rows = molecules, columns = features).
+
 
 
 
