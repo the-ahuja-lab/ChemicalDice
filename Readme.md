@@ -11,9 +11,9 @@ bioinformatics applications.
 ChemicalDice is available as both Python and R packages, making it useful
 for both community and enterprise users.
 
-[Get Started with ChemicalDice Python](https://github.com/the-ahuja-lab/ChemicalDice/tree/main/R-package){: .btn }
+[Get Started with ChemicalDice Python](https://github.com/the-ahuja-lab/ChemicalDice/tree/main/R-package)
 
-[Get Started with ChemicalDice R](https://github.com/the-ahuja-lab/ChemicalDice/tree/main/python-package){: .btn }
+[Get Started with ChemicalDice R](https://github.com/the-ahuja-lab/ChemicalDice/tree/main/python-package)
 
 
 
