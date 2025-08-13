@@ -29,15 +29,15 @@ DTYPE_R <- "numeric" # The 'what' argument for readBin
 # }
 
 # Load the reticulate library
-library(reticulate)
-py_require("rdkit")
+# library(reticulate)
+# py_require("rdkit")
 
 # Before you run the function, you might need to tell reticulate which
 # Python environment to use (the one where RDKit is installed).
 # use_condaenv("your_conda_env_name", required = TRUE)
 
 # Import the necessary RDKit Python module into an R object
-rdkit <- import("rdkit.Chem", convert = TRUE)
+
 
 #' Validates and canonicalizes a SMILES string using RDKit
 #'
@@ -74,7 +74,7 @@ process_smiles <- function(smiles_string) {
 
 
 # --- Main Function ---
-collect_features_from_csv <- function(filepath, key = NULL) {
+collect_features_from_csv2 <- function(filepath, key = NULL) {
   
   # --- 1. Pre-process and Validate the Input CSV ---
   message("Reading and validating CSV...")
@@ -89,6 +89,7 @@ collect_features_from_csv <- function(filepath, key = NULL) {
   # Apply the processing function to the SMILES column
   # Note: `lapply` returns a list, so we unlist it back to a vector
   #   df_data[, SMILES := unlist(lapply(SMILES, process_smiles))]
+  rdkit <- import("rdkit.Chem", convert = TRUE)
   df_data$SMILES <- unlist(lapply(df_data$SMILES, process_smiles))
   
   # Check for invalid entries (which we defined as NA in our function)
