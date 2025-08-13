@@ -17,19 +17,23 @@ This package provides an R interface to validate, canonicalize, and batch-embed 
 
 ### Install R dependencies
 ```r
-install.packages(c("httr", "data.table", "progress", "jsonlite", "reticulate"))
+install.packages(c("httr", "data.table", "progress", "jsonlite", "reticulate","curl"))
+remotes::install_github("the-ahuja-lab/ChemicalDice@main", subdir = "R-package")
+
 ```
 
 ### Python & RDKit setup
 You must have Python and RDKit installed. The easiest way is via conda:
 ```sh
-conda create -n chemdice python=3.9 rdkit -c conda-forge
+conda create -n chemicaldice python=3.9 rdkit -c conda-forge
 ```
 
 In R, point reticulate to your conda environment:
 ```r
 library(reticulate)
-use_condaenv("chemdice", required = TRUE)
+use_condaenv("chemicaldice", required = TRUE)
+py_require("rdkit")
+rdkit <- import("rdkit.Chem", convert = TRUE)
 ```
 
 ## Usage
@@ -37,11 +41,13 @@ use_condaenv("chemdice", required = TRUE)
 ### Batch Feature Extraction from CSV
 Your CSV must have a column named `SMILES`.
 ```r
+library(ChemicalDice)
 features <- collect_features_from_csv("smiles.csv",key = "API_KEY")
 ```
 
 - The function will validate all SMILES, overwrite the CSV with canonical SMILES, and stream the file to the server.
 - Returns a numeric matrix of features (rows = molecules, columns = features).
+
 
 
 
