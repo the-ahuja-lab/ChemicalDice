@@ -1,6 +1,4 @@
-Chemical Dice
-=============
-
+# Chemical Dice
 ChemicalDice is a deep learning featurizer developed using unsupervised 
 learning on the ChEMBL database. It captures six distinct molecular 
 representations: quantum descriptors, bioactivity profiles, language model
@@ -13,9 +11,9 @@ bioinformatics applications.
 ChemicalDice is available as both Python and R packages, making it useful
 for both community and enterprise users.
 
-[Get Started with ChemicalDice Python](https://github.com/your-repo/ChemicalDice){: .btn }
+[Get Started with ChemicalDice Python](https://github.com/the-ahuja-lab/ChemicalDice/tree/main/R-package){: .btn }
 
-[Get Started with ChemicalDice R](https://github.com/your-repo/ChemicalDice){: .btn }
+[Get Started with ChemicalDice R](https://github.com/the-ahuja-lab/ChemicalDice/tree/main/python-package){: .btn }
 
 
 
