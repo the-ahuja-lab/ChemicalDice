@@ -8,6 +8,5 @@
     library(data.table)
     library(reticulate)
   })
-  py_require("rdkit")
-  assign("rdkit", import("rdkit.Chem", convert = TRUE), envir = parent.env(environment()))
 }
+
