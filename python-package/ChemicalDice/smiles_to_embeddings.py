@@ -23,6 +23,24 @@ def decode(encoded_text):
 
 # encoded=
 # print("Decoded:", decode(encoded))
+import sys
+import requests
+import numpy as np
+import pandas as pd
+from tqdm import tqdm
+import os
+import math
+
+# --- Configuration (must match the server) ---
+URL = "http://192.168.24.13:8001/stream-features-from-csv"
+BATCH_SIZE = 32
+NUM_FEATURES = 8192
+DTYPE = np.float32
+
+
+import pandas as pd
+
+
 
 def collect_features_from_csv(filepath: str,key: str = None):
     """
@@ -30,14 +48,6 @@ def collect_features_from_csv(filepath: str,key: str = None):
     batches into a final NumPy array.
     """
     received_batches = []
-    headers = {"X-API-Key": key}
-    URL = "http://chemicaldice.ahujalab.iiitd.edu.in:8001"
-
-    df_data = pd.read_csv(filepath)
-
-
-
-
     df_data = pd.read_csv(filepath)
     if 'SMILES' not in df_data.columns:
         raise ValueError("CSV must contain a 'SMILES' column.")
@@ -70,14 +80,20 @@ def collect_features_from_csv(filepath: str,key: str = None):
 
     # Calculate expected number of batches for the progress bar
     total_batches = math.ceil(NUM_ROWS / BATCH_SIZE)
-
+    # Calculate the size of one complete batch in bytes
+    batch_byte_size = BATCH_SIZE * NUM_FEATURES * np.dtype(DTYPE).itemsize
+    
+    # Calculate expected number of batches for the progress bar
+    total_batches = math.ceil(NUM_ROWS / BATCH_SIZE)
+    headers = {"X-API-Key": key}
     try:
         # Open the local CSV file to be sent in the request
         with open(filepath, 'rb') as csv_file:
             # The 'files' dict tells requests to send a multipart/form-data POST
+            # The key 'file' must match the argument name in the FastAPI endpoint
             files = {'file': (os.path.basename(filepath), csv_file, 'text/csv')}
-
-            with requests.post(URL, files=files, headers=headers, stream=True) as response:
+            
+            with requests.post(URL, files=files,headers=headers, stream=True) as response:
                 response.raise_for_status()
                 print(f"Sent {filepath}. Receiving stream...")
 
@@ -88,7 +104,7 @@ def collect_features_from_csv(filepath: str,key: str = None):
                         batch = np.frombuffer(chunk, dtype=DTYPE).reshape(BATCH_SIZE, NUM_FEATURES)
                         received_batches.append(batch)
                         progress_bar.update(1)
-
+                
                 progress_bar.close()
 
     except requests.exceptions.RequestException as e:
@@ -102,13 +118,13 @@ def collect_features_from_csv(filepath: str,key: str = None):
     # Assemble the final array
     print("\nStream finished. Concatenating batches...")
     final_array_with_padding = np.vstack(received_batches)
-
+    
     # Trim any padding added to the last batch
     final_array = final_array_with_padding[:NUM_ROWS]
 
-    print("Assembly complete!")
-    print("Done")
     return final_array
+
+
 
 
 def process_smiles(s):
