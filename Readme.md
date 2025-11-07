@@ -61,8 +61,8 @@ pip install -r requirements.txt
 ```python
 from CDI import ChemicalDiceIntegrator
 
-# Load six input embeddings for each molecule
-# Example: quantum, bioactivity, language, graph, physicochemical, and 2D features
+# Load SMILES
+# 
 
 integrator = ChemicalDiceIntegrator()
 super_embeddings = integrator.fit_transform(six_feature_matrix)
