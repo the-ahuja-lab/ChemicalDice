@@ -31,6 +31,30 @@ CDI extends the **ChemicalDice** featurization ecosystem by performing unsupervi
 
 Each compound’s six feature types are combined to create a **single latent embedding** that captures chemical, structural, and biological semantics. These embeddings can be directly used for tasks such as **QSAR modeling**, **virtual screening**, **drug-target interaction prediction**, and **bioactivity clustering**.
 
+## License Key
+
+**CDI is free for academic institutions, however, for commercial utilization a commercial license key is required. Users (academic/commercial) may apply for a valid "License Key" [here](https://forms.gle/).**
+
+You can also generate your own predictions using CDI’s [Colab notebook](https://colab.research.google.com/drive/)
+
+## Environment Setup (done using requirement.txt)
+
+**Major dependencies**
+1. [RDKit (v2022.3.1)](https://www.rdkit.org/)
+2. Python (v3.8)
+
+**Minor dependencies**
+1. os
+2. [scikit-learn (v1.2.1)](https://scikit-learn.org/stable/whats_new/v1.0.html)
+3. [pandas (v1.4.3)](https://pandas.pydata.org/)
+4. [numpy (v>=1.20.3)](https://numpy.org)
+5. [tqdm](https://tqdm.github.io)
+6. [joblib (v1.1.1)](https://pypi.org/project/joblib/)
+7. [importlib ](https://pypi.org/project/importlib/)
+8. [importlib-resources (v5.7.1)](https://github.com/python/importlib_resources)
+
+
+
 ---
 
 ## ⚙️ **Implementation Details**
@@ -62,7 +86,6 @@ pip install -r requirements.txt
 from CDI import ChemicalDiceIntegrator
 
 # Load SMILES
-# 
 
 integrator = ChemicalDiceIntegrator()
 super_embeddings = integrator.fit_transform(six_feature_matrix)
