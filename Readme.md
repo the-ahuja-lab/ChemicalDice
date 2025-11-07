@@ -42,7 +42,7 @@ Each compound’s six feature types are combined to create a **single latent emb
 | Activation | ReLU |
 | Latent Dimension | 8192 |
 | Input  | SMILES |
-| Output | Unified latent embedding (`.npy` or `.csv`) |
+| Output | Unified latent embedding (`.csv`) |
 
 ---
 
@@ -75,41 +75,6 @@ Molecule_ID | Super_Embedding_Vector (8192 dims)
 MOL_001     | [0.0123, 0.4421, 0.2235, ...]
 MOL_002     | [0.1032, 0.5124, 0.1346, ...]
 ```
-
-Install packages
-----------------
-
-To use the **ChemicalDice** package, you need to install it along with
-its dependencies. You can install ChemicalDice and its dependencies
-using the following commands:
-
-.. code:: bash
-
-   pip install numpy pandas tqdm rdkit 
-   pip install -i https://test.pypi.org/simple/ ChemicalDice
-
-
-Calculation of Embeddings
---------------------------
-
-.. code:: python
-
-   # SMILES column should be present in the CSV file.
-   #example CSV file:
-   # SMILES,other_column1,other_column2
-   # CC(=O)OC1=CC=CC=C1C(=O)O,1,2
-   # C1=CC=CC=C1,3,4
-   # C1=CC=C(C=C1)C(=O)O,1,2
-   from ChemicalDice import  smiles_to_embeddings
-   embeddings = smiles_to_embeddings.collect_features_from_csv(
-      filepath="smiles.csv",
-      key = "API_KEY",  # Replace with your actual API key
-   )
-
-
-
-
-
 
 ---
 ## 🚀 **R Installation*
