@@ -1,5 +1,5 @@
 # **ChemicalDice Integrator (CDI)**  
-**CDI (ChemicalDice Integrator)** is an advanced **deep-learning framework** built to unify diverse chemical representations into a single, information-rich latent space. It integrates six complementary molecular embeddings from **ChemicalDice** into a consolidated vector, optimized for downstream cheminformatics and bioinformatics tasks.
+**CDI (ChemicalDice Integrator)** is a high-performance deep learning framework designed to unify heterogeneous chemical representations into a single, high information rich latent space. By fusing six complementary molecular embeddings, CDI produces a consolidated vector optimized for large-scale cheminformatics, bioinformatics, and AI-driven molecular discovery tasks.
 
 ---
 
@@ -18,7 +18,7 @@
 
 ---
 
-## ⚗️ **Overview**
+##  **Overview**
 
 CDI extends the **ChemicalDice** featurization ecosystem by performing unsupervised integration of **six distinct molecular embeddings**:
 
@@ -41,7 +41,7 @@ Each compound’s six feature types are combined to create a **single latent emb
 | Loss Function | Mean Squared Error + Reconstruction Error |
 | Activation | ReLU |
 | Latent Dimension | 8192 |
-| Input Features | 6 precomputed embeddings per molecule |
+| Input  | SMILES |
 | Output | Unified latent embedding (`.npy` or `.csv`) |
 
 ---
