@@ -40,7 +40,7 @@ Each compound’s six feature types are combined to create a **single latent emb
 | Framework | PyTorch / TensorFlow |
 | Loss Function | Mean Squared Error + Reconstruction Error |
 | Activation | ReLU |
-| Latent Dimension | 1024 |
+| Latent Dimension | 8192 |
 | Input Features | 6 precomputed embeddings per molecule |
 | Output | Unified latent embedding (`.npy` or `.csv`) |
 
