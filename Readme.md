@@ -1,135 +1,96 @@
-# 🧪 **ChemicalDice**
-
-**ChemicalDice** is a deep learning–based molecular featurizer developed using unsupervised learning on the **ChEMBL** database.  
-It captures **six complementary molecular representations**, providing a unified, information-rich embedding for each compound:
-
-- 🧬 **Quantum descriptors**  
-- ⚗️ **Bioactivity profiles**  
-- 💬 **Language model embeddings**  
-- 🌐 **Graph-based features**  
-- ⚖️ **Physicochemical properties**  
-- 🖼️ **2D image-based representations**
-
-ChemicalDice takes **SMILES strings** as input and produces **comprehensive embeddings** suitable for a wide range of cheminformatics and bioinformatics tasks — including QSAR modeling, virtual screening, and molecular property prediction.
-
-> 🧠 Available as both **Python** and **R** packages for seamless integration into diverse computational workflows.
+# 🧬 **ChemicalDice Integrator (CDI)**  
+**CDI (ChemicalDice Integrator)** is an advanced **deep-learning framework** built to unify diverse chemical representations into a single, information-rich latent space. It integrates six complementary molecular embeddings from **ChemicalDice** into a consolidated vector, optimized for downstream cheminformatics and bioinformatics tasks.
 
 ---
 
 <div align="center">
-  <img src="Images/CDI.png" alt="ChemicalDice Overview" width="750">
+  <img src="Images/CDI.png" alt="ChemicalDice Integrator Overview" width="750">
 </div>
 
 <p align="center">
   <img src="https://img.shields.io/badge/License-MIT-blue.svg">
   <img src="https://img.shields.io/badge/docs-passing-green">
   <img src="https://img.shields.io/badge/python-3.9+-blue">
-  <a href="https://github.com/the-ahuja-lab/inertrope">
+  <a href="https://github.com/the-ahuja-lab/ChemicalDiceIntegrator">
     <img src="https://img.shields.io/badge/Code-Source-black">
   </a>
 </p>
 
 ---
 
-## ⚙️ Installation
+## ⚗️ **Overview**
 
-### 🐍 Python Package  
-📘 [Get Started with ChemicalDice (Python)](https://github.com/the-ahuja-lab/ChemicalDice/tree/main/python-package)
+CDI extends the **ChemicalDice** featurization ecosystem by performing unsupervised integration of **six distinct molecular embeddings**:
 
-<details>
-<summary>▶️ <b>Installation Commands</b></summary>
+- 🧬 **Quantum Descriptors**  
+- ⚗️ **Bioactivity Signatures**  
+- 💬 **Language Model Embeddings**  
+- 🌐 **Graph-Derived Representations**  
+- ⚖️ **Physicochemical Profiles**  
+- 🖼️ **2D Molecular Image Features**  
+
+Each compound’s six feature types are combined to create a **single latent embedding** that captures chemical, structural, and biological semantics. These embeddings can be directly used for tasks such as **QSAR modeling**, **virtual screening**, **drug-target interaction prediction**, and **bioactivity clustering**.
+
+---
+
+## ⚙️ **Implementation Details**
+
+| Parameter | Description |
+|------------|--------------|
+| Framework | PyTorch / TensorFlow |
+| Loss Function | Mean Squared Error + Reconstruction Error |
+| Activation | ReLU |
+| Latent Dimension | 1024 |
+| Input Features | 6 precomputed embeddings per molecule |
+| Output | Unified latent embedding (`.npy` or `.csv`) |
+
+---
+
+## 📦 **Installation**
 
 ```bash
-pip install numpy pandas tqdm rdkit
-pip install -i https://test.pypi.org/simple/ ChemicalDice
+git clone https://github.com/the-ahuja-lab/ChemicalDiceIntegrator.git
+cd ChemicalDiceIntegrator
+pip install -r requirements.txt
 ```
-</details>
 
-<details>
-<summary>💡 <b>Example: Generate Molecular Embeddings</b></summary>
+---
+
+## 🚀 **Usage Example**
 
 ```python
-from ChemicalDice import smiles_to_embeddings
+from CDI import ChemicalDiceIntegrator
 
-# Example CSV (smiles.csv)
-# SMILES,other_column1,other_column2
-# CC(=O)OC1=CC=CC=C1C(=O)O,1,2
-# C1=CC=CC=C1,3,4
-# C1=CC=C(C=C1)C(=O)O,1,2
+# Load six input embeddings for each molecule
+# Example: quantum, bioactivity, language, graph, physicochemical, and 2D features
 
-embeddings = smiles_to_embeddings.collect_features_from_csv(
-    filepath="smiles.csv",
-    key="API_KEY"  # Replace with your actual API key
-)
+integrator = ChemicalDiceIntegrator()
+super_embeddings = integrator.fit_transform(six_feature_matrix)
 ```
-</details>
+
+**Output:**
+```
+Molecule_ID | Super_Embedding_Vector (1024 dims)
+-----------------------------------------------
+MOL_001     | [0.0123, 0.4421, 0.2235, ...]
+MOL_002     | [0.1032, 0.5124, 0.1346, ...]
+```
 
 ---
 
-### 📊 R Package  
-📗 [Get Started with ChemicalDice (R)](https://github.com/the-ahuja-lab/ChemicalDice/tree/main/R-package)
+## 📊 **Applications**
 
-#### 🧩 Overview
-The **R package** provides a native interface to the ChemicalDice API for validating, canonicalizing, and featurizing SMILES.  
-It uses **RDKit** (via `reticulate`) for SMILES handling and supports streaming of large CSV files for efficient feature extraction.
-
-#### 💻 System Requirements
-- R ≥ 4.0  
-- Python (with RDKit installed)  
-- R packages: `httr`, `data.table`, `progress`, `jsonlite`, `reticulate`, `curl`
-
-<details>
-<summary>▶️ <b>Install Dependencies</b></summary>
-
-```r
-install.packages(c("httr", "data.table", "progress", "jsonlite", "reticulate", "curl"))
-remotes::install_github("the-ahuja-lab/ChemicalDice@main", subdir = "R-package")
-```
-</details>
-
-<details>
-<summary>🐍 <b>Set Up Python & RDKit Environment</b></summary>
-
-```bash
-conda create -n chemicaldice python=3.9 rdkit -c conda-forge
-```
-</details>
-
-<details>
-<summary>💡 <b>Example: Extract Features from CSV</b></summary>
-
-```r
-library(ChemicalDice)
-library(reticulate)
-
-use_condaenv("chemicaldice", required = TRUE)
-py_require("rdkit")
-rdkit <- import("rdkit.Chem", convert = TRUE)
-
-# Extract features from CSV containing a 'SMILES' column
-features <- collect_features_from_csv("smiles.csv", key = "API_KEY")
-```
-
-> ✅ The function validates and canonicalizes all SMILES, overwrites the CSV with canonical forms, and streams it to the server.  
-> Returns a numeric matrix of features (rows = molecules, columns = features).
-</details>
+- 🧩 Unified embedding generation for **QSAR / virtual screening**  
+- 🧠 Latent-space mapping for **deorphanization** and **bioactivity clustering**  
+- ⚗️ Foundation for **Chemical Foundation Models**  
+- 🔬 Enables **cross-modal integration** of text, graph, and physicochemical data**  
 
 ---
 
-## 🚀 Key Features
+## 🧠 **Citation**
 
-- 🔗 **Unified featurization** integrating six molecular representations  
-- ⚙️ **Cross-platform** support (Python & R)  
-- 🧩 **API-based** architecture for scalable batch processing  
-- 📦 **Containerized** (Docker-ready) for reproducible deployments  
-- 📊 **Seamless integration** with ML pipelines for QSAR, ADMET, and property prediction  
+If you use **ChemicalDice Integrator (CDI)** in your research, please cite:
 
----
-
-## 🧠 Citation
-
-If you use **ChemicalDice** in your research, please cite:
-
-> *ChemicalDice: A Unified Multi-Representation Featurizer for Molecular Learning*  
-> The Ahuja Lab, 2025.  
-> [GitHub Repository](https://github.com/the-ahuja-lab/ChemicalDice)
+> *ChemicalDice Integrator (CDI): An Evolutionary-Guided Deep Learning Framework for Unified Molecular Embedding Integration*  
+> Mudit Gupta, The Ahuja Lab, 2024.  
+> [GitHub Repository](https://github.com/the-ahuja-lab/ChemicalDiceIntegrator)
