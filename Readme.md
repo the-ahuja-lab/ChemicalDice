@@ -1,5 +1,5 @@
 # Chemical Dice
-ChemicalDice is a deep learning featurizer developed using unsupervised 
+**ChemicalDice** is a deep learning featurizer developed using unsupervised 
 learning on the ChEMBL database. It captures six distinct molecular 
 representations: quantum descriptors, bioactivity profiles, language model
 embeddings, graph-based features, physicochemical properties, and 
@@ -55,12 +55,12 @@ Calculation of Embeddings
 
 .. code:: python
 
-   # SMILES column should be present in the CSV file.
+   ##SMILES column should be present in the CSV file.
    #example CSV file:
-   # SMILES,other_column1,other_column2
-   # CC(=O)OC1=CC=CC=C1C(=O)O,1,2
-   # C1=CC=CC=C1,3,4
-   # C1=CC=C(C=C1)C(=O)O,1,2
+   SMILES,other_column1,other_column2
+   CC(=O)OC1=CC=CC=C1C(=O)O,1,2
+   C1=CC=CC=C1,3,4
+   C1=CC=C(C=C1)C(=O)O,1,2
    from ChemicalDice import  smiles_to_embeddings
    embeddings = smiles_to_embeddings.collect_features_from_csv(
       filepath="smiles.csv",
