@@ -1,10 +1,10 @@
-# 🧬 **ChemicalDice Integrator (CDI)**  
+# **ChemicalDice Integrator (CDI)**  
 **CDI (ChemicalDice Integrator)** is an advanced **deep-learning framework** built to unify diverse chemical representations into a single, information-rich latent space. It integrates six complementary molecular embeddings from **ChemicalDice** into a consolidated vector, optimized for downstream cheminformatics and bioinformatics tasks.
 
 ---
 
 <div align="center">
-  <img src="Images/CDI.png" alt="ChemicalDice Integrator Overview" width="750">
+  <img src="images/CDI.png" alt="ChemicalDice Integrator Overview" width="750">
 </div>
 
 <p align="center">
