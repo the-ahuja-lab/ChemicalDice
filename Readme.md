@@ -55,20 +55,7 @@ You can also generate your own predictions using CDI’s [Colab notebook](https:
 
 
 
----
-
-## ⚙️ **Implementation Details**
-
-| Parameter | Description |
-|------------|--------------|
-| Framework | PyTorch / TensorFlow |
-| Loss Function | Mean Squared Error + Reconstruction Error |
-| Activation | ReLU |
-| Latent Dimension | 8192 |
-| Input  | SMILES |
-| Output | Unified latent embedding (`.csv`) |
-
----
+## How to use CDI?
 
 ## 📦 **Installation**
 
@@ -79,6 +66,17 @@ pip install -r requirements.txt
 ```
 
 ---
+
+### Installation using pip 
+```
+$ pip install -i https://test.pypi.org/simple/CDI
+```
+
+### License activation (One time)
+To apply for the license [click here](https://forms.gle/)
+
+
+
 
 ## 🚀 **Usage Example**
 
