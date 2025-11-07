@@ -33,7 +33,7 @@ Each compound’s six feature types are combined to create a **single latent emb
 
 ## License Key
 
-**CDI is free for academic institutions, however, for commercial utilization a commercial license key is required. Users (academic/commercial) may apply for a valid "License Key" [here](https://forms.gle/).**
+**CDI is free for academic institutions, however, for commercial utilization a commercial license key is required. Users (academic/commercial) may apply for a valid "License Key" [here](https://forms.gle/2GjV3hUwzF7efVbC8).**
 
 You can also generate your own predictions using CDI’s [Colab notebook](https://colab.research.google.com/drive/)
 
@@ -73,7 +73,7 @@ $ pip install -i https://test.pypi.org/simple/CDI
 ```
 
 ### License activation (One time)
-To apply for the license [click here](https://forms.gle/)
+To apply for the license [click here](https://forms.gle/2GjV3hUwzF7efVbC8)
 
 
 
