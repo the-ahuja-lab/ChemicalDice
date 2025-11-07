@@ -160,6 +160,6 @@ features <- collect_features_from_csv("smiles.csv",key = "API_KEY")
 
 If you use **ChemicalDice Integrator (CDI)** in your research, please cite:
 
-> *ChemicalDice Integrator (CDI): An Evolutionary-Guided Deep Learning Framework for Unified Molecular Embedding Integration*  
+> *ChemicalDice Integrator (CDI):Chemical Dice: A Scalable Framework for Multimodal Molecular Representation Learning*  
 > The Ahuja Lab, 2025.  
 > [GitHub Repository](https://github.com/the-ahuja-lab/ChemicalDiceIntegrator)
