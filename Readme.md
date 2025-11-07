@@ -70,7 +70,7 @@ super_embeddings = integrator.fit_transform(six_feature_matrix)
 
 **Output:**
 ```
-Molecule_ID | Super_Embedding_Vector (1024 dims)
+Molecule_ID | Super_Embedding_Vector (8192 dims)
 -----------------------------------------------
 MOL_001     | [0.0123, 0.4421, 0.2235, ...]
 MOL_002     | [0.1032, 0.5124, 0.1346, ...]
@@ -92,5 +92,5 @@ MOL_002     | [0.1032, 0.5124, 0.1346, ...]
 If you use **ChemicalDice Integrator (CDI)** in your research, please cite:
 
 > *ChemicalDice Integrator (CDI): An Evolutionary-Guided Deep Learning Framework for Unified Molecular Embedding Integration*  
-> Mudit Gupta, The Ahuja Lab, 2024.  
+> The Ahuja Lab, 2025.  
 > [GitHub Repository](https://github.com/the-ahuja-lab/ChemicalDiceIntegrator)
