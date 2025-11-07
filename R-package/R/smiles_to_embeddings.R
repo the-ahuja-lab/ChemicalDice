@@ -89,7 +89,7 @@ collect_features_from_csv <- function(filepath, key = NULL) {
   fwrite(df_data, filepath)
   
   # --- 2. Prepare for Streaming Request ---
-  URL <- "http://chemicaldice.ahujalab.iiitd.edu.in:8001"
+  URL <- "http://chemicaldice.ahujalab.iiitd.edu.in:8001/stream-features-from-csv/"
 
   # The Python `decode` function is not standard, so this is an assumption.
   
@@ -157,3 +157,8 @@ collect_features_from_csv <- function(filepath, key = NULL) {
   message("Done")
   return(final_array)
 }
+
+
+
+
+
