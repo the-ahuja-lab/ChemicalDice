@@ -30,7 +30,8 @@ def collect_features_from_csv(filepath: str,key: str = None):
     batches into a final NumPy array.
     """
     received_batches = []
-    key = decode(key)
+    headers = {"X-API-Key": key}
+    URL = "http://chemicaldice.ahujalab.iiitd.edu.in:8001"
 
     df_data = pd.read_csv(filepath)
 
@@ -74,10 +75,9 @@ def collect_features_from_csv(filepath: str,key: str = None):
         # Open the local CSV file to be sent in the request
         with open(filepath, 'rb') as csv_file:
             # The 'files' dict tells requests to send a multipart/form-data POST
-            # The key 'file' must match the argument name in the FastAPI endpoint
             files = {'file': (os.path.basename(filepath), csv_file, 'text/csv')}
 
-            with requests.post(key, files=files, stream=True) as response:
+            with requests.post(URL, files=files, headers=headers, stream=True) as response:
                 response.raise_for_status()
                 print(f"Sent {filepath}. Receiving stream...")
 
@@ -117,6 +117,5 @@ def process_smiles(s):
         print(f"Invalid SMILES: {s}")
         return None
     return Chem.MolToSmiles(mol, canonical=True)
-
 
 
