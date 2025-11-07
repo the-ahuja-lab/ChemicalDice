@@ -34,8 +34,9 @@ for all users.
 ## ⚙️ Installation
 
 ### 🧱 Using  Python
-
 [Get Started with ChemicalDice R](https://github.com/the-ahuja-lab/ChemicalDice/tree/main/python-package)
+
+
 
 Install packages
 ----------------
@@ -55,20 +56,20 @@ Calculation of Embeddings
 
 .. code:: python
 
-   ##SMILES column should be present in the CSV file.
+   # SMILES column should be present in the CSV file.
    #example CSV file:
-   SMILES,other_column1,other_column2
-   CC(=O)OC1=CC=CC=C1C(=O)O,1,2
-   C1=CC=CC=C1,3,4
-   C1=CC=C(C=C1)C(=O)O,1,2
+   # SMILES,other_column1,other_column2
+   # CC(=O)OC1=CC=CC=C1C(=O)O,1,2
+   # C1=CC=CC=C1,3,4
+   # C1=CC=C(C=C1)C(=O)O,1,2
    from ChemicalDice import  smiles_to_embeddings
    embeddings = smiles_to_embeddings.collect_features_from_csv(
       filepath="smiles.csv",
       key = "API_KEY",  # Replace with your actual API key
    )
 
-[Get Started with ChemicalDice Python](https://github.com/the-ahuja-lab/ChemicalDice/tree/main/R-package)
 # R Package 
+[Get Started with ChemicalDice Python](https://github.com/the-ahuja-lab/ChemicalDice/tree/main/R-package)
 ## Overview
 This package provides an R interface to validate, canonicalize, and make embeddings from SMILES using ChemicalDice API. It uses RDKit (via reticulate) for SMILES validation and canonicalization, and streams CSV files for feature extraction.
 
