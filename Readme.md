@@ -4,7 +4,7 @@
 ---
 
 <div align="center">
-  <img src="images/CDI.png" alt="ChemicalDice Integrator Overview" width="750">
+  <img src="Images/CDI.png" alt="ChemicalDice Integrator Overview" width="750">
 </div>
 
 <p align="center">
