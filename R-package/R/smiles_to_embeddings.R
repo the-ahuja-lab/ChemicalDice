@@ -89,15 +89,9 @@ collect_features_from_csv <- function(filepath, key = NULL) {
   fwrite(df_data, filepath)
   
   # --- 2. Prepare for Streaming Request ---
-  
-  # Decode the key (assuming base64 for this example)
+  URL <- "http://chemicaldice.ahujalab.iiitd.edu.in:8001"
+
   # The Python `decode` function is not standard, so this is an assumption.
-  if (!is.null(key)) {
-    URL <- rawToChar(base64_dec(key))
-  } else {
-    # Provide a default URL if no key is given
-    URL <- "http://127.0.0.1:8000/stream-features-from-csv"
-  }
   
   received_batches <- list()
   byte_buffer <- raw() # Buffer for incoming raw bytes
@@ -116,10 +110,11 @@ collect_features_from_csv <- function(filepath, key = NULL) {
   # --- 3. Send Request and Collect Streamed Data ---
   
   message(paste("Sent", basename(filepath), "to server. Receiving stream..."))
-  
+  headers= list("X-API-Key" = key)
   tryCatch({
     res <- POST(
       url = URL,
+      headers = headers,
       body = list(file = upload_file(filepath, type = 'text/csv')),
       write_stream(function(chunk) {
         byte_buffer <<- c(byte_buffer, chunk)
@@ -162,7 +157,3 @@ collect_features_from_csv <- function(filepath, key = NULL) {
   message("Done")
   return(final_array)
 }
-
-
-
-
