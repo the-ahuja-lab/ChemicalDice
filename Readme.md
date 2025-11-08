@@ -56,21 +56,21 @@ You can also generate your own predictions using CDI’s [Colab notebook](https:
 ## Get Started
 Ready to dive in? First, clone this repository to your chosen location:
 
-## 📦 **Installation**
-
-```bash
-git clone https://github.com/the-ahuja-lab/ChemicalDice.git
-cd ChemicalDiceIntegrator
-pip install -r requirements.txt
-```
----
-
 ### Installation using pip 
 
 ```
 $ pip install numpy pandas tqdm rdkit
 $ pip install -i https://test.pypi.org/simple/CDI
 ```
+or
+
+## 📦 **Installation using Git**
+
+```bash
+git clone https://github.com/the-ahuja-lab/ChemicalDice.git
+cd ChemicalDiceIntegrator
+```
+---
 
 ### License activation (One time)
 To apply for the license [click here](https://forms.gle/2GjV3hUwzF7efVbC8)
