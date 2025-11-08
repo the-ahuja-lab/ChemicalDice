@@ -119,11 +119,11 @@ This package provides an R interface to validate, canonicalize, and make embeddi
 ### System Requirements
 - R (>= 4.0)
 - Python (with RDKit installed)
-- The following R packages: `httr`, `data.table`, `progress`, `jsonlite`, `reticulate`, `curl`
+- The following R packages: `httr`, `data.table`, `progress`, `jsonlite`, `reticulate`, `curl`, `remotes`
 
 ### Install R dependencies
 ```r
-install.packages(c("httr", "data.table", "progress", "jsonlite", "reticulate","curl","remotes"))
+install.packages(c("httr", "data.table", "progress", "jsonlite", "reticulate", "curl", "remotes"))
 remotes::install_github("the-ahuja-lab/ChemicalDice@main", subdir = "R-package")
 ```
 
