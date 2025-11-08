@@ -53,7 +53,6 @@ You can also generate your own predictions using CDI’s [Colab notebook](https:
 7. [importlib-resources (v5.7.1)](https://github.com/python/importlib_resources)
 
 
-<br>
 ## Get Started
 Ready to dive in? First, clone this repository to your chosen location:
 
@@ -64,7 +63,6 @@ git clone https://github.com/the-ahuja-lab/ChemicalDice.git
 cd ChemicalDiceIntegrator
 pip install -r requirements.txt
 ```
-<br>
 ---
 
 ### Installation using pip 
