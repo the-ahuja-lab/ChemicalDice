@@ -20,7 +20,7 @@
 
 ##  **Overview**
 
-CDI extends the **ChemicalDice** featurization ecosystem by performing unsupervised integration of **six distinct molecular embeddings**:
+CDI extends the **Chemical Dice Integrator** featurization ecosystem by performing unsupervised integration of **six distinct molecular embeddings**:
 
 - 🧬 **Quantum Descriptors**  
 - ⚗️ **Bioactivity Signatures**  
@@ -35,44 +35,30 @@ Each compound’s six feature types are combined to create a **single latent emb
 
 **CDI is free for academic institutions, however, for commercial utilization a commercial license key is required. Users (academic/commercial) may apply for a valid "License Key" [here](https://forms.gle/2GjV3hUwzF7efVbC8).**
 
-You can also generate your own predictions using CDI’s [Colab notebook](https://colab.research.google.com/drive/)
+You can also generate your own predictions using CDI’s [ipynb notebook](https://colab.research.google.com/drive/)
 
 ## Environment Setup 
 
-**Major dependencies**
-1. [RDKit (v2022.3.1)](https://www.rdkit.org/)
-2. Python (v3.8)
-
-**Minor dependencies**
-1. [scikit-learn (v1.2.1)](https://scikit-learn.org/stable/whats_new/v1.0.html)
-2. [pandas (v1.4.3)](https://pandas.pydata.org/)
-3. [numpy (v>=1.20.3)](https://numpy.org)
-4. [tqdm](https://tqdm.github.io)
-5. [joblib (v1.1.1)](https://pypi.org/project/joblib/)
-6. [importlib ](https://pypi.org/project/importlib/)
-7. [importlib-resources (v5.7.1)](https://github.com/python/importlib_resources)
-
+**Dependencies**
+1. Python (v3.8)
+2. [RDKit (v2022.3.1)](https://www.rdkit.org/)
+3. [pandas (v1.4.3)](https://pandas.pydata.org/)
+4. [numpy (v>=1.20.3)](https://numpy.org)
+5. [tqdm](https://tqdm.github.io)
 
 ##  Quick Start: Get Featurizer Like a Pro - R or Python, We’ve Got You Covered
-Whether you’re an R wizard or a Python powerhouse, ChemicalDice has you covered.
+Whether you’re an R wizard or a Python powerhouse, Chemical Dice Integrator(CDI) has you covered.
 If you’re diving into machine learning for chemistry or bioinformatics, you don’t need to worry about choosing the right featurizer - we’ve already done the hard work for you.
 
-With just two pip commands, you’re ready to generate rich, unified molecular embeddings for your giant ML workflows — no confusion, no setup hassle. 🚀
+With just two pip commands, you’re ready to generate rich, unified molecular embeddings for your giant ML workflows - no confusion, no setup hassle. 🚀
 
 
 ### Installation using pip 
 ```
 $ pip install numpy pandas tqdm rdkit
-$  pip install -i https://test.pypi.org/simple/ ChemicalDice
+$ pip install -i https://test.pypi.org/simple/ ChemicalDice
 ```
-or
 
-## 📦 **Installation using Git**
-
-```bash
-git clone https://github.com/the-ahuja-lab/ChemicalDice.git
-cd ChemicalDiceIntegrator
-```
 ---
 
 ### License activation (One time)
@@ -85,19 +71,12 @@ To compute molecular embeddings from SMILES strings stored in a CSV file, ensure
 ## Example CSV File
 
 ```csv
-|SMILES|other_column1|other_column2|
-|CC(=O)OC1=CC=CC=C1C(=O)|O|1|
-|C1=CC=CC=C1|3|4|
-|C1=CC=C(C=C1)C(=O)O|1|2|
-
-✅ Example of `smiles.csv`:
-|SrNum|SMILES|
-|1|OCC/C=C\CC|
-|2|OCC/C=C\CC|
-|3|CCCC(=O)O|
-|4|CCCCCCCC=O|
-|5|CC(=O)C(=O)C|
-
+SrNum,SMILES
+1,OCC/C=C\CC
+2,OCC/C=C\CC
+3,CCCC(=O)O
+4,CCCCCCCC=O
+5,CC(=O)C(=O)C
 ```
 
 ---
@@ -107,7 +86,7 @@ To compute molecular embeddings from SMILES strings stored in a CSV file, ensure
 
 ```python
 # SMILES column should be present in the CSV file
-# Example usage of ChemicalDice to compute embeddings
+# Example usage of Chemical Dice Integrator to compute embeddings
 
 from ChemicalDice import smiles_to_embeddings
 
@@ -115,18 +94,19 @@ embeddings = smiles_to_embeddings.collect_features_from_csv(
     filepath="smiles.csv",
     key="API_KEY"  # Replace with your actual API key
 )
+CDI_emb = pd.DataFrame(embeddings)
+CDI_emb.to_csv("CDI_features.csv",index=False)
 
-print(embeddings)
 ```
 
 ---
 
 **Output:**
 ```
-Molecule_ID | Super_Embedding_Vector (8192 dims)|
+Super_Embedding_Vector (8192 dims)
 -----------------------------------------------
-MOL_001     | [0.0123, 0.4421, 0.2235, ...] |
-MOL_002     | [0.1032, 0.5124, 0.1346, ...] |
+[0.0123, 0.4421, 0.2235, ...] 
+[0.1032, 0.5124, 0.1346, ...] 
 ```
 
 ---
@@ -145,17 +125,8 @@ This package provides an R interface to validate, canonicalize, and make embeddi
 ```r
 install.packages(c("httr", "data.table", "progress", "jsonlite", "reticulate","curl"))
 remotes::install_github("the-ahuja-lab/ChemicalDice@main", subdir = "R-package")
-
-
-
-
 ```
 
-### Python & RDKit setup
-You must have Python and RDKit installed. The easiest way is via conda:
-```sh
-conda create -n chemicaldice python=3.9 rdkit -c conda-forge
-```
 
 ## Usage
 
@@ -163,7 +134,6 @@ Load libraries, point reticulate to your conda environment and import rdkit:
 ```r
 library(ChemicalDice)
 library(reticulate)
-use_condaenv("chemicaldice", required = TRUE)
 py_require("rdkit")
 rdkit <- import("rdkit.Chem", convert = TRUE)
 ```
@@ -172,6 +142,9 @@ rdkit <- import("rdkit.Chem", convert = TRUE)
 Your CSV must have a column named `SMILES`.
 ```r
 features <- collect_features_from_csv("smiles.csv",key = "API_KEY")
+features_df= data.frame(features)
+features_df
+write.csv(features_df,"CDI_features.csv")
 ```
 
 - The function will validate all SMILES, overwrite the CSV with canonical SMILES, and stream the file to the server.
