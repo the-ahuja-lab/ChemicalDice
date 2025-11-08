@@ -82,14 +82,13 @@ To compute molecular embeddings from SMILES strings stored in a CSV file, ensure
 ## Example CSV File
 
 ```csv
-SMILES,other_column1,other_column2
-CC(=O)OC1=CC=CC=C1C(=O)O,1,2
-C1=CC=CC=C1,3,4
-C1=CC=C(C=C1)C(=O)O,1,2
+|SMILES|other_column1|other_column2|
+|CC(=O)OC1=CC=CC=C1C(=O)|O|1|
+|C1=CC=CC=C1|3|4|
+|C1=CC=C(C=C1)C(=O)O|1|2|
 
 ✅ Example of `Input_SMILES.csv`:
 |SrNum|SMILES|
-|:----|:-------|
 |1|OCC/C=C\CC|
 |2|OCC/C=C\CC|
 |3|CCCC(=O)O|
