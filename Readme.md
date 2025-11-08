@@ -53,11 +53,14 @@ You can also generate your own predictions using CDI’s [Colab notebook](https:
 7. [importlib-resources (v5.7.1)](https://github.com/python/importlib_resources)
 
 
-## Get Started
-Ready to dive in? First, clone this repository to your chosen location:
+##  Quick Start: Get Featurizer Like a Pro - R or Python, We’ve Got You Covered
+Whether you’re an R wizard or a Python powerhouse, ChemicalDice has you covered.
+If you’re diving into machine learning for chemistry or bioinformatics, you don’t need to worry about choosing the right featurizer - we’ve already done the hard work for you.
+
+With just two pip commands, you’re ready to generate rich, unified molecular embeddings for your giant ML workflows — no confusion, no setup hassle. 🚀
+
 
 ### Installation using pip 
-
 ```
 $ pip install numpy pandas tqdm rdkit
 $ pip install -i https://test.pypi.org/simple/CDI
@@ -87,7 +90,7 @@ To compute molecular embeddings from SMILES strings stored in a CSV file, ensure
 |C1=CC=CC=C1|3|4|
 |C1=CC=C(C=C1)C(=O)O|1|2|
 
-✅ Example of `Input_SMILES.csv`:
+✅ Example of `smiles.csv`:
 |SrNum|SMILES|
 |1|OCC/C=C\CC|
 |2|OCC/C=C\CC|
@@ -120,10 +123,10 @@ print(embeddings)
 
 **Output:**
 ```
-Molecule_ID | Super_Embedding_Vector (8192 dims)
+Molecule_ID | Super_Embedding_Vector (8192 dims)|
 -----------------------------------------------
-MOL_001     | [0.0123, 0.4421, 0.2235, ...]
-MOL_002     | [0.1032, 0.5124, 0.1346, ...]
+MOL_001     | [0.0123, 0.4421, 0.2235, ...] |
+MOL_002     | [0.1032, 0.5124, 0.1346, ...] |
 ```
 
 ---
