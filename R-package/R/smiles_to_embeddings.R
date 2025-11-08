@@ -89,7 +89,7 @@ collect_features_from_csv <- function(filepath, key = NULL) {
   fwrite(df_data, filepath)
   
   # --- 2. Prepare for Streaming Request ---
-  URL <- "http://chemicaldice.ahujalab.iiitd.edu.in:8001/stream-features-from-csv/"
+  URL <- "http://192.168.24.13:8001/stream-features-from-csv"
 
   # The Python `decode` function is not standard, so this is an assumption.
   
@@ -110,7 +110,10 @@ collect_features_from_csv <- function(filepath, key = NULL) {
   # --- 3. Send Request and Collect Streamed Data ---
   
   message(paste("Sent", basename(filepath), "to server. Receiving stream..."))
-  headers= list("X-API-Key" = key)
+  headers <- c()
+  if (!is.null(key)) {
+      headers <- add_headers(`X-API-Key` = key)
+  }
   tryCatch({
     res <- POST(
       url = URL,
