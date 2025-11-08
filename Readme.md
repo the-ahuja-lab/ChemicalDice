@@ -60,7 +60,7 @@ You can also generate your own predictions using CDI’s [Colab notebook](https:
 ## 📦 **Installation**
 
 ```bash
-git clone [[https://github.com/the-ahuja-lab/ChemicalDiceIntegrator.git](https://github.com/the-ahuja-lab/ChemicalDice.git)]
+git clone https://github.com/the-ahuja-lab/ChemicalDice.git
 cd ChemicalDiceIntegrator
 pip install -r requirements.txt
 ```
