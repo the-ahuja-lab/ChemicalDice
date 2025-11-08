@@ -37,7 +37,7 @@ Each compound’s six feature types are combined to create a **single latent emb
 
 You can also generate your own predictions using CDI’s [Colab notebook](https://colab.research.google.com/drive/)
 
-## Environment Setup (done using requirement.txt)
+## Environment Setup 
 
 **Major dependencies**
 1. [RDKit (v2022.3.1)](https://www.rdkit.org/)
@@ -75,19 +75,39 @@ $ pip install -i https://test.pypi.org/simple/CDI
 ### License activation (One time)
 To apply for the license [click here](https://forms.gle/2GjV3hUwzF7efVbC8)
 
+To compute molecular embeddings from SMILES strings stored in a CSV file, ensure that your dataset includes a column named **`SMILES`**.
 
+---
+
+## Example CSV File
+
+```csv
+SMILES,other_column1,other_column2
+CC(=O)OC1=CC=CC=C1C(=O)O,1,2
+C1=CC=CC=C1,3,4
+C1=CC=C(C=C1)C(=O)O,1,2
+```
+
+---
 
 
 ## 🚀 **Usage Example**
 
 ```python
-from CDI import ChemicalDiceIntegrator
+# SMILES column should be present in the CSV file
+# Example usage of ChemicalDice to compute embeddings
 
-# Load SMILES
+from ChemicalDice import smiles_to_embeddings
 
-integrator = ChemicalDiceIntegrator()
-super_embeddings = integrator.fit_transform(six_feature_matrix)
+embeddings = smiles_to_embeddings.collect_features_from_csv(
+    filepath="smiles.csv",
+    key="API_KEY"  # Replace with your actual API key
+)
+
+print(embeddings)
 ```
+
+---
 
 **Output:**
 ```
