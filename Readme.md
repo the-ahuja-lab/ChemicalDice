@@ -44,7 +44,7 @@ You can also generate your own predictions using CDI’s [Colab notebook](https:
 2. Python (v3.8)
 
 **Minor dependencies**
-1. os
+1
 2. [scikit-learn (v1.2.1)](https://scikit-learn.org/stable/whats_new/v1.0.html)
 3. [pandas (v1.4.3)](https://pandas.pydata.org/)
 4. [numpy (v>=1.20.3)](https://numpy.org)
@@ -60,7 +60,7 @@ You can also generate your own predictions using CDI’s [Colab notebook](https:
 ## 📦 **Installation**
 
 ```bash
-git clone https://github.com/the-ahuja-lab/ChemicalDiceIntegrator.git
+git clone [[https://github.com/the-ahuja-lab/ChemicalDiceIntegrator.git](https://github.com/the-ahuja-lab/ChemicalDice.git)]
 cd ChemicalDiceIntegrator
 pip install -r requirements.txt
 ```
