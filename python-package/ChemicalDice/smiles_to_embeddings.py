@@ -32,7 +32,7 @@ import os
 import math
 
 # --- Configuration (must match the server) ---
-URL = "http://192.168.24.13:8001/stream-features-from-csv"
+URL = "http://chemicaldice.ahujalab.iiitd.edu.in:8001/stream-features-from-csv"
 BATCH_SIZE = 32
 NUM_FEATURES = 8192
 DTYPE = np.float32
