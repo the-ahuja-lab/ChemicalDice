@@ -63,7 +63,7 @@ With just two pip commands, you’re ready to generate rich, unified molecular e
 ### Installation using pip 
 ```
 $ pip install numpy pandas tqdm rdkit
-$ pip install -i https://test.pypi.org/simple/CDI
+$  pip install -i https://test.pypi.org/simple/ ChemicalDice
 ```
 or
 
