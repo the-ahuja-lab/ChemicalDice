@@ -19,10 +19,6 @@ This package provides an R interface to validate, canonicalize, and make embeddi
 ```r
 install.packages(c("httr", "data.table", "progress", "jsonlite", "reticulate","curl"))
 remotes::install_github("the-ahuja-lab/ChemicalDice@main", subdir = "R-package")
-
-
-
-
 ```
 
 ### Python & RDKit setup
@@ -50,5 +46,6 @@ features <- collect_features_from_csv("smiles.csv",key = "API_KEY")
 
 - The function will validate all SMILES, overwrite the CSV with canonical SMILES, and stream the file to the server.
 - Returns a numeric matrix of features (rows = molecules, columns = features).
+
 
 
