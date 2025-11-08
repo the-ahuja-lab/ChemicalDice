@@ -7,31 +7,9 @@ import math
 import hashlib
 import base64
 from rdkit import Chem
-# --- Configuration (must match the server) ---
-
-BATCH_SIZE = 32
-NUM_FEATURES = 8192
-DTYPE = np.float32
 
 
 
-
-def decode(encoded_text):
-    # Decode base64 to bytes, then to string
-    return base64.b64decode(encoded_text.encode()).decode()
-
-
-# encoded=
-# print("Decoded:", decode(encoded))
-import sys
-import requests
-import numpy as np
-import pandas as pd
-from tqdm import tqdm
-import os
-import math
-
-# --- Configuration (must match the server) ---
 URL = "http://chemicaldice.ahujalab.iiitd.edu.in:8001/stream-features-from-csv"
 BATCH_SIZE = 32
 NUM_FEATURES = 8192
@@ -133,5 +111,6 @@ def process_smiles(s):
         print(f"Invalid SMILES: {s}")
         return None
     return Chem.MolToSmiles(mol, canonical=True)
+
 
 
