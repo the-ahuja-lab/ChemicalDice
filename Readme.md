@@ -44,18 +44,18 @@ You can also generate your own predictions using CDI’s [Colab notebook](https:
 2. Python (v3.8)
 
 **Minor dependencies**
-1
-2. [scikit-learn (v1.2.1)](https://scikit-learn.org/stable/whats_new/v1.0.html)
-3. [pandas (v1.4.3)](https://pandas.pydata.org/)
-4. [numpy (v>=1.20.3)](https://numpy.org)
-5. [tqdm](https://tqdm.github.io)
-6. [joblib (v1.1.1)](https://pypi.org/project/joblib/)
-7. [importlib ](https://pypi.org/project/importlib/)
-8. [importlib-resources (v5.7.1)](https://github.com/python/importlib_resources)
+1. [scikit-learn (v1.2.1)](https://scikit-learn.org/stable/whats_new/v1.0.html)
+2. [pandas (v1.4.3)](https://pandas.pydata.org/)
+3. [numpy (v>=1.20.3)](https://numpy.org)
+4. [tqdm](https://tqdm.github.io)
+5. [joblib (v1.1.1)](https://pypi.org/project/joblib/)
+6. [importlib ](https://pypi.org/project/importlib/)
+7. [importlib-resources (v5.7.1)](https://github.com/python/importlib_resources)
 
 
-
-## How to use CDI?
+<br>
+## Get Started
+Ready to dive in? First, clone this repository to your chosen location:
 
 ## 📦 **Installation**
 
@@ -64,11 +64,13 @@ git clone https://github.com/the-ahuja-lab/ChemicalDice.git
 cd ChemicalDiceIntegrator
 pip install -r requirements.txt
 ```
-
+<br>
 ---
 
 ### Installation using pip 
+
 ```
+$ pip install numpy pandas tqdm rdkit
 $ pip install -i https://test.pypi.org/simple/CDI
 ```
 
@@ -86,6 +88,16 @@ SMILES,other_column1,other_column2
 CC(=O)OC1=CC=CC=C1C(=O)O,1,2
 C1=CC=CC=C1,3,4
 C1=CC=C(C=C1)C(=O)O,1,2
+
+✅ Example of `Input_SMILES.csv`:
+|SrNum|SMILES|
+|:----|:-------|
+|1|OCC/C=C\CC|
+|2|OCC/C=C\CC|
+|3|CCCC(=O)O|
+|4|CCCCCCCC=O|
+|5|CC(=O)C(=O)C|
+
 ```
 
 ---
