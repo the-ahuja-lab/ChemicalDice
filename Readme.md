@@ -123,7 +123,7 @@ This package provides an R interface to validate, canonicalize, and make embeddi
 
 ### Install R dependencies
 ```r
-install.packages(c("httr", "data.table", "progress", "jsonlite", "reticulate","curl"))
+install.packages(c("httr", "data.table", "progress", "jsonlite", "reticulate","curl","remotes"))
 remotes::install_github("the-ahuja-lab/ChemicalDice@main", subdir = "R-package")
 ```
 
