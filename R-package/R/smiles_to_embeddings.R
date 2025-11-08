@@ -89,77 +89,81 @@ collect_features_from_csv <- function(filepath, key = NULL) {
   fwrite(df_data, filepath)
   
   # --- 2. Prepare for Streaming Request ---
-  URL <- "http://192.168.24.13:8001/stream-features-from-csv"
+  URL <- "http://chemicaldice.ahujalab.iiitd.edu.in:8001/stream-features-from-csv"
 
   # The Python `decode` function is not standard, so this is an assumption.
   
   received_batches <- list()
   byte_buffer <- raw() # Buffer for incoming raw bytes
   
+
   NUM_ROWS <- nrow(df_data)
-  batch_byte_size <- BATCH_SIZE * NUM_FEATURES * FLOAT_SIZE_BYTES
+  batch_byte_size <- as.integer(BATCH_SIZE * NUM_FEATURES * FLOAT_SIZE_BYTES)
   total_batches <- ceiling(NUM_ROWS / BATCH_SIZE)
   
-  # Initialize progress bar
-  pb <- progress_bar$new(
-    format = "[:bar] :percent | Batches: :current/:total | ETA: :eta",
-    total = total_batches,
-    width = 80
-  )
-  
-  # --- 3. Send Request and Collect Streamed Data ---
-  
-  message(paste("Sent", basename(filepath), "to server. Receiving stream..."))
   headers <- c()
   if (!is.null(key)) {
       headers <- add_headers(`X-API-Key` = key)
   }
-  tryCatch({
-    res <- POST(
-      url = URL,
-      headers = headers,
-      body = list(file = upload_file(filepath, type = 'text/csv')),
-      write_stream(function(chunk) {
-        byte_buffer <<- c(byte_buffer, chunk)
-        while (length(byte_buffer) >= batch_byte_size) {
-          batch_bytes <- byte_buffer[1:batch_byte_size]
-          
-          # Convert raw bytes to a numeric vector
-          float_vector <- readBin(batch_bytes, what = DTYPE_R, size = FLOAT_SIZE_BYTES, n = BATCH_SIZE * NUM_FEATURES)
-          
-          # Reshape vector into a matrix (byrow=TRUE matches NumPy's default)
-          batch_matrix <- matrix(float_vector, nrow = BATCH_SIZE, ncol = NUM_FEATURES, byrow = TRUE)
-          
-          received_batches[[length(received_batches) + 1]] <<- batch_matrix
-          byte_buffer <<- byte_buffer[-(1:batch_byte_size)]
-          pb$tick()
-        }
-        return(TRUE) # Keep connection open
-      })
-    )
-    stop_for_status(res) # Check for HTTP errors after stream ends
-  }, error = function(e) {
-    message(paste("Error during request:", e$message))
-    return(NULL)
-  })
+  # --- 3. Send Request and Collect Streamed Data ---
   
-  if (length(received_batches) == 0) {
-    message("No batches were received.")
-    return(NULL)
+  resp <- POST(
+      URL,
+      body = list(file = upload_file(filepath, type = "text/csv")),
+      encode = "multipart",
+      headers
+  )
+  
+  if (http_error(resp)) {
+      stop(sprintf("HTTP request failed: %s", status_code(resp)))
   }
   
-  # --- 4. Assemble Final Matrix ---
+  message(sprintf("Sent %s. Receiving stream...", filepath))
+  raw_content <- content(resp, "raw")
+  if (length(raw_content) == 0L) {
+      message("No data received.")
+      return(NULL)
+  }
+  
+  # Split raw content into chunks of batch_byte_size
+  total_bytes <- length(raw_content)
+  n_chunks <- ceiling(total_bytes / batch_byte_size)
+  
+  pb <- progress_bar$new(format = "  [:bar] :percent (:current/:total) batches", total = n_chunks, clear = FALSE, width = 60)
+  
+  batches <- vector("list", n_chunks)
+  byte_start <- 1L
+  for (i in seq_len(n_chunks)) {
+      byte_end <- min(total_bytes, byte_start + batch_byte_size - 1L)
+      chunk_raw <- raw_content[byte_start:byte_end]
+      # read float32 values from raw into numeric (R double)
+      con <- rawConnection(chunk_raw, open = "rb")
+      on.exit(close(con), add = TRUE)
+      n_values <- length(chunk_raw) / FLOAT_SIZE_BYTES
+      # readBin returns numeric (double) by default; size=4 reads float32
+      values <- readBin(con, what = "numeric", n = as.integer(n_values), size = 4, endian = "little")
+      close(con)
+      # If chunk does not contain a full batch (shouldn't normally happen if server pads),
+      # we will try to reshape by rows (BATCH_SIZE x NUM_FEATURES). If not enough values, pad with NA.
+      expected_vals <- BATCH_SIZE * NUM_FEATURES
+      if (length(values) < expected_vals) {
+          values <- c(values, rep(NA_real_, expected_vals - length(values)))
+      }
+      mat <- matrix(values, nrow = BATCH_SIZE, ncol = NUM_FEATURES, byrow = TRUE)
+      batches[[i]] <- mat
+      pb$tick()
+      byte_start <- byte_end + 1L
+  }
+  pb$terminate()
+  
+  # Concatenate batches and trim padding to NUM_ROWS
+  all_rows <- do.call(rbind, batches)
+  final_array <- all_rows[seq_len(NUM_ROWS), , drop = FALSE]
   
   message("\nStream finished. Concatenating batches...")
-  final_array_with_padding <- do.call(rbind, received_batches)
-  
-  # Trim padding from the last batch
-  final_array <- final_array_with_padding[1:NUM_ROWS, ]
-  
-  message("Assembly complete!")
-  message("Done")
-  return(final_array)
+  return(final_array)  # matrix with NUM_ROWS rows and NUM_FEATURES columns
 }
+
 
 
 
