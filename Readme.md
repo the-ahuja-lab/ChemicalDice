@@ -89,6 +89,7 @@ SrNum,SMILES
 # Example usage of Chemical Dice Integrator to compute embeddings
 
 from ChemicalDice import smiles_to_embeddings
+import pandas as pd
 
 embeddings = smiles_to_embeddings.collect_features_from_csv(
     filepath="smiles.csv",
