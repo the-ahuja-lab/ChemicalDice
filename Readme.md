@@ -35,7 +35,7 @@ Each compound’s six feature types are combined to create a **single latent emb
 
 **CDI is free for academic institutions, however, for commercial utilization a commercial license key is required. Users (academic/commercial) may apply for a valid "License Key" [here](https://forms.gle/2GjV3hUwzF7efVbC8).**
 
-You can also generate your own predictions using CDI’s [ipynb notebook](https://colab.research.google.com/drive/)
+You can also generate your own predictions using CDI’s [ipynb notebook](https://github.com/the-ahuja-lab/ChemicalDice/blob/main/demo/CDI_demo.ipynb)
 
 ## Environment Setup 
 
