@@ -7,7 +7,12 @@ library(jsonlite)
 library(data.table)
 library(reticulate)
 
-
+# --- Configuration (must match the server) ---
+BATCH_SIZE <- 32
+NUM_FEATURES <- 8192 # Assuming this is your feature size
+# In R, we specify the size in bytes. float32 is 4 bytes.
+FLOAT_SIZE_BYTES <- 4
+DTYPE_R <- "numeric" # The 'what' argument for readBin
 
 
 # Before you run the function, you might need to tell reticulate which
@@ -15,6 +20,14 @@ library(reticulate)
 # Import the necessary RDKit Python module into an R object
 rdkit <- import("rdkit.Chem", convert = TRUE)
 
+#' Validates and canonicalizes a SMILES string using RDKit
+#'
+#' This function uses the Python RDKit library via reticulate to parse
+#' a SMILES string. If the string is valid, it returns the canonical
+#' SMILES. If it is invalid, it returns NA.
+#'
+#' @param smiles_string A character string representing a molecule.
+#' @return The canonical SMILES string or NA_character_ if invalid.
 
 process_smiles <- function(smiles_string) {
   # Use tryCatch to handle errors from RDKit (for invalid SMILES)
@@ -53,12 +66,7 @@ is_valid_smiles <- function(smiles_string) {
 
 # --- Main Function ---
 collect_features_from_csv <- function(filepath, key , convert_to_canonical = TRUE) {
-  # --- Configuration (must match the server) ---
-  BATCH_SIZE <- 32
-  NUM_FEATURES <- 8192 # Assuming this is your feature size
-  # In R, we specify the size in bytes. float32 is 4 bytes.
-  FLOAT_SIZE_BYTES <- 4
-  DTYPE_R <- "numeric" # The 'what' argument for readBin
+  
   # --- 1. Pre-process and Validate the Input CSV ---
   library(data.table)
   message("Reading and validating CSV...")
