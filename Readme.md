@@ -190,8 +190,13 @@ library(ChemicalDice)
 # Point reticulate to your Conda environment (replace 'my_rdkit_env' with your environment name)
 use_condaenv("my_rdkit_env", required = TRUE)
 
+#py_require tells reticulate your R session needs RDKit, checks for it, and if missing, auto‑creates a temporary Python environment to install it so your code runs seamlessly.
+py_require("rdkit") 
+
 # Alternatively, point to a specific Python executable
 # use_python("/path/to/your/python", required = TRUE)
+
+
 
 # Import RDKit
 rdkit <- import("rdkit.Chem", convert = TRUE)
@@ -233,7 +238,7 @@ C1CCCCC1,Cyclohexane
 
 **Step 2: Run the Feature Extraction**
 
-Replace `"your_api_key_here"` with the API key you received from ChemicalDice.
+Replace `"API_KEY"` with the API key you received from ChemicalDice.
 
 ```r
 # Load the library (if not already loaded at the top of your script)
@@ -246,8 +251,8 @@ CDI_embeddings <- collect_features_from_csv(
     convert_to_canonical=TRUE
 )
 
-#CDI_embeddings is a data frame
-View(CDI_embeddings)
+#check CDI_embeddings data frame
+head(CDI_embeddings[,1:10])
 
 # Save the features to a new CSV file
 write.csv(CDI_embeddings, "CDI_embeddings.csv", row.names = FALSE)
