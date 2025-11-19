@@ -197,8 +197,6 @@ py_require("rdkit")
 # Alternatively, point to a specific Python executable
 # use_python("/path/to/your/python", required = TRUE)
 
-
-
 # Import RDKit
 rdkit <- import("rdkit.Chem", convert = TRUE)
 ```
