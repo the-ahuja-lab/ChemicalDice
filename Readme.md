@@ -190,7 +190,8 @@ library(ChemicalDice)
 # Point reticulate to your Conda environment (replace 'my_rdkit_env' with your environment name)
 use_condaenv("my_rdkit_env", required = TRUE)
 
-#py_require tells reticulate your R session needs RDKit, checks for it, and if missing, auto‑creates a temporary Python environment to install it so your code runs seamlessly.
+#py_require tells reticulate your R session needs RDKit, checks for it
+# In case Rdkit is missing creates a Python environment to install it so code runs seamlessly.
 py_require("rdkit") 
 
 # Alternatively, point to a specific Python executable
