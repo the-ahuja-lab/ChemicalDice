@@ -24,12 +24,11 @@
 - [ChemicalDice Python Package](#chemicaldice-python-package-python-interface-to-the-chemical-dice-integrator-api)
   - [Installation](#installation)
   - [Usage](#usage)
-  - [Troubleshooting & Notes](#troubleshooting--notes)
 - [ChemicalDice R Package](#chemicaldice-r-r-interface-to-the-chemicaldice-api)
   - [Installation](#installation-1)
   - [Configuration & Setup](#configuration--setup)
   - [Usage](#usage-1)
-  - [Troubleshooting & Notes](#troubleshooting--notes-1)
+- [Troubleshooting & Notes](#troubleshooting--notes)
 
 ##  **Overview**
 
@@ -124,7 +123,7 @@ CDI_embeddings.to_csv("CDI_embeddings.csv", index=False)
 *   **Input**: Path to a CSV file with a `SMILES` column.
 *   **Process**:
     1.  **Validation**: Uses RDKit to validate each SMILES string. Invalid entries are flagged and skipped.
-    2.  **Canonicalization(Optional)**: The original `SMILES` column in your input CSV are converted to canonical SMILES. In case you do not want canonicalization you can set convert_to_canonical argument to False.
+    2.  **Canonicalization(Optional)**: The original `SMILES` column in your input CSV is converted to canonical SMILES. In case you do not want canonicalization you can set convert_to_canonical argument to False.
     3.  **Feature Extraction**: The CSV is streamed to the ChemicalDice API, which returns a data frame of molecular features.
 *   **Output**: A dataframe where the first column contains the input **SMILES**, other columns correspond to the extracted features, and rows correspond to successfully processed molecules.  
 This standardized output can be used directly for downstream tasks such as QSAR modeling, clustering, virtual screening, or integration into machine learning pipelines.
@@ -132,7 +131,7 @@ This standardized output can be used directly for downstream tasks such as QSAR 
 ### **Troubleshooting & Notes**
 
 *   **API Key & IP Whitelisting**: Your API key will only work from the IP address you registered. If your IP address changes (common for home internet connections), you will need to update your registration or use a static IP/VPN.
-*   **Backup Your Data**: The input CSV file is modified in-place. Always work on a copy of your original data** to prevent data loss.
+*   **Backup Your Data**: The input CSV file is modified in-place. Always work on a copy of your **original data** to prevent data loss.
 *   **Invalid SMILES**: Molecules with invalid SMILES will be skipped during processing and will not appear in the output feature dataframe. Check the function's messages or your overwritten CSV for details on which entries were invalid in column `is_valid`.
 *   **Network Connection**: A stable internet connection is required to communicate with the ChemicalDice API.
 
@@ -240,26 +239,28 @@ Replace `"your_api_key_here"` with the API key you received from ChemicalDice.
 library(ChemicalDice)
 
 # Extract features
-feature_df <- collect_features_from_csv(
-  
+CDI_embeddings <- collect_features_from_csv(
+    filepath="smiles.csv",
+    key="API_KEY",
+    convert_to_canonical=TRUE
 )
 
-# View the first few rows
-print(head(features_df))
+#CDI_embeddings is a data frame
+View(CDI_embeddings)
 
 # Save the features to a new CSV file
-write.csv(features_df, "ChemicalDice_Features.csv", row.names = FALSE)
+write.csv(CDI_embeddings, "CDI_embeddings.csv", row.names = FALSE)
 ```
 
 #### **Function Details: `collect_features_from_csv`**
 
 *   **Purpose**: Processes a CSV file to generate molecular feature embeddings.
-*   **Input**: Path to a CSV file with a `SMILES` column.
+*   **Input**: Path to a CSV file with a `SMILES` column, Chemical Dice API key.
 *   **Process**:
     1.  **Validation**: Uses RDKit to validate each SMILES string. Invalid entries are flagged and skipped.
-    2.  **Canonicalization(Optional)**: The original `SMILES` column in your input CSV are converted to canonical SMILES. In case you do not want canonicalization you can set convert_to_canonical argument to False.
+    2.  **Canonicalization(Optional)**: The original `SMILES` column in your input CSV is converted to canonical SMILES. In case you do not want canonicalization you can set convert_to_canonical argument to False.
     3.  **Feature Extraction**: The CSV is streamed to the ChemicalDice API, which returns a data frame of molecular features.
-*   **Output**: A dataframe where the first column contains the input **SMILES**, other columns correspond to the extracted features, and rows correspond to successfully processed molecules.  
+*   **Output**: A data frame where the first column contains the input **SMILES**, other columns correspond to the extracted features, and rows correspond to successfully processed molecules.  
 This standardized output can be used directly for downstream tasks such as QSAR modeling, clustering, virtual screening, or integration into machine learning pipelines.
 
 ---
@@ -267,7 +268,7 @@ This standardized output can be used directly for downstream tasks such as QSAR 
 ### **Troubleshooting & Notes**
 
 *   **API Key & IP Whitelisting**: Your API key will only work from the IP address you registered. If your IP address changes (common for home internet connections), you will need to update your registration or use a static IP/VPN.
-*   **Backup Your Data**: The input CSV file is modified in-place. Always work on a copy of your original data** to prevent data loss.
+*   **Backup Your Data**: The input CSV file is modified in-place. Always work on a copy of your **original data** to prevent data loss.
 *   **Invalid SMILES**: Molecules with invalid SMILES will be skipped during processing and will not appear in the output feature dataframe. Check the function's messages or your overwritten CSV for details on which entries were invalid in column `is_valid`.
 *   **Network Connection**: A stable internet connection is required to communicate with the ChemicalDice API.
 
