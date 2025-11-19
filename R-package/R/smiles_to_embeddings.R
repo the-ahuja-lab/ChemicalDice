@@ -7,12 +7,6 @@ library(jsonlite)
 library(data.table)
 library(reticulate)
 
-# --- Configuration (must match the server) ---
-BATCH_SIZE <- 32
-NUM_FEATURES <- 8192 # Assuming this is your feature size
-# In R, we specify the size in bytes. float32 is 4 bytes.
-FLOAT_SIZE_BYTES <- 4
-DTYPE_R <- "numeric" # The 'what' argument for readBin
 
 
 # Before you run the function, you might need to tell reticulate which
@@ -54,11 +48,27 @@ process_smiles <- function(smiles_string) {
   })
 }
 
-
+is_valid_smiles <- function(smiles_string) {
+  tryCatch({
+    mol <- rdkit$MolFromSmiles(smiles_string)
+    if (is.null(mol)) {
+      return(FALSE)
+    }
+    return(TRUE)
+  }, error = function(e) {
+    return(FALSE)
+  })
+}
 
 # --- Main Function ---
-collect_features_from_csv <- function(filepath, key = NULL) {
-  
+collect_features_from_csv <- function(filepath, key , convert_to_canonical = TRUE) {
+  # --- Configuration (must match the server) ---
+  BATCH_SIZE <- 32
+  NUM_FEATURES <- 8192 # Assuming this is your feature size
+  # In R, we specify the size in bytes. float32 is 4 bytes.
+  FLOAT_SIZE_BYTES <- 4
+  DTYPE_R <- "numeric" # The 'what' argument for readBin
+
   # --- 1. Pre-process and Validate the Input CSV ---
   library(data.table)
   message("Reading and validating CSV...")
@@ -73,17 +83,58 @@ collect_features_from_csv <- function(filepath, key = NULL) {
   # Apply the processing function to the SMILES column
   # Note: `lapply` returns a list, so we unlist it back to a vector
   #   df_data[, SMILES := unlist(lapply(SMILES, process_smiles))]
-  
-  df_data$SMILES <- unlist(lapply(df_data$SMILES, process_smiles))
-  
-  # Check for invalid entries (which we defined as NA in our function)
-  num_invalid <- sum(is.na(df_data$SMILES))
-  
+
+  df_data$is_valid <- unlist(lapply(df_data$SMILES, is_valid_smiles))
+
+  num_invalid <- sum(!df_data$is_valid)
+
+
   if (num_invalid > 0) {
-    stop(paste("Found", num_invalid, "invalid SMILES. Please fix or remove them before proceeding."))
-  } else {
-    message("All SMILES are valid.")
+    # Print invalid rows
+    print(df_data[!df_data$is_valid, ])
+    
+    cat(sprintf("Found %d invalid SMILES. See above for details.\n", num_invalid))
+    # cat("There are invalid SMILES in the input CSV. Please fix or remove them before proceeding.\n")
+    
+    # Save dataframe to CSV
+    write.csv(df_data, filepath, row.names = FALSE)
+    
+    # Keep only valid SMILES and reset rownames (like reset_index in pandas)
+    df_data <- df_data[df_data$is_valid, , drop = FALSE]
+    rownames(df_data) <- NULL
+    
+    cat(sprintf("Proceeding with %d valid SMILES.\n", nrow(df_data)))
+    
+    } else {
+    cat("All SMILES are valid.\n")
   }
+
+
+  
+  # Assume df_data is a data.frame with a column "SMILES"
+  # Assume process_smiles() is already defined (e.g., via reticulate with RDKit)
+
+  if (convert_to_canonical) {
+    cat("Converting SMILES to canonical form...\n")
+    
+    # Apply process_smiles to each SMILES string
+    df_data$SMILES <- unlist(lapply(df_data$SMILES, process_smiles))
+    
+    # Save canonicalized dataframe to a temporary CSV file
+    filepath <- tempfile(fileext = ".csv")
+    write.csv(df_data, filepath, row.names = FALSE)
+
+    cat(sprintf("Coverted SMILES to  Canonical SMILES \n"))
+    # cat(sprintf("Saved canonical SMILES to temp file: %s\n", filepath))
+    
+  } else {
+    # Save dataframe to a temporary CSV file without canonicalization
+    filepath <- tempfile(fileext = ".csv")
+    write.csv(df_data, filepath, row.names = FALSE)
+    
+    cat(sprintf("Saved SMILES to temp file: %s\n", filepath))
+  }
+
   
   # Overwrite the original file with the processed data
   fwrite(df_data, filepath)
@@ -159,10 +210,17 @@ collect_features_from_csv <- function(filepath, key = NULL) {
     all_rows <- do.call(rbind, batches)
     final_array <- all_rows[seq_len(NUM_ROWS), , drop = FALSE]
     
-    message("\nStream finished. Concatenating batches...")
-    return(final_array)  # matrix with NUM_ROWS rows and NUM_FEATURES columns
-}
+    feature_cols <- paste0("CDI", seq_len(ncol(final_array)))
 
-# Example usage:
-# features <- collect_features_from_csv("molecules.csv", key = "MY_API_KEY")
-# dim(features)
+    # 2. Build data frame with those columns
+    df_features <- as.data.frame(final_array)
+    colnames(df_features) <- feature_cols
+
+    # 3. Insert SMILES column at the front
+    df_features <- cbind(SMILES = df_data$SMILES, df_features)
+    message("\nStream finished. Concatenating batches...")
+    if (num_invalid > 0) {
+            cat("Invalid SMILES were skipped. Check your input file which is_valid column where False indicates invalid SMILES.")
+    }
+    return(df_features)  # data frame with NUM_ROWS rows and NUM_FEATURES columns
+}
