@@ -125,7 +125,7 @@ collect_features_from_csv <- function(filepath, key , convert_to_canonical = TRU
     filepath <- tempfile(fileext = ".csv")
     write.csv(df_data, filepath, row.names = FALSE)
 
-    cat(sprintf("Coverted SMILES to  Canonical SMILES \n"))
+    #cat(sprintf("Coverted SMILES to  Canonical SMILES \n"))
     # cat(sprintf("Saved canonical SMILES to temp file: %s\n", filepath))
     
   } else {
@@ -225,5 +225,6 @@ collect_features_from_csv <- function(filepath, key , convert_to_canonical = TRU
     }
     return(df_features)  # data frame with NUM_ROWS rows and NUM_FEATURES columns
 }
+
 
 
