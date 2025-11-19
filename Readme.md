@@ -52,14 +52,15 @@ Each compound’s six feature types are combined to create a **single latent emb
 *   **RDKit** (v2022.3.1 or higher) — [https://www.rdkit.org/](https://www.rdkit.org/)
 *   **pandas** (v1.4.3 or higher) — [https://pandas.pydata.org/](https://pandas.pydata.org/)
 *   **numpy** (v1.20.3 or higher) — [https://numpy.org](https://numpy.org)
-*   **tqdm** (or v4.65 or higher) - [https://pypi.org/project/tqdm/](https://pypi.org/project/tqdm/)
+*   **tqdm** (v4.65 or higher) - [https://pypi.org/project/tqdm/](https://pypi.org/project/tqdm/)
+* **requests** (2.32.4 or higher)-[https://pypi.org/project/requests/](https://pypi.org/project/requests/)
 
 #### **2. Install Python Dependencies**
 
 Open terminal or jupyter notebook run the following command to install all required python packages.
 
 ```bash
-pip install numpy pandas rdkit tqdm
+pip install numpy pandas rdkit tqdm requests
 ```
 
 #### **3. Install the ChemicalDice Python Package**
