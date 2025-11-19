@@ -18,7 +18,7 @@ DTYPE_R <- "numeric" # The 'what' argument for readBin
 # Before you run the function, you might need to tell reticulate which
 # Python environment to use (the one where RDKit is installed).
 # Import the necessary RDKit Python module into an R object
-rdkit <- import("rdkit.Chem", convert = TRUE)
+# rdkit <- import("rdkit.Chem", convert = TRUE)
 
 #' Validates and canonicalizes a SMILES string using RDKit
 #'
@@ -30,6 +30,7 @@ rdkit <- import("rdkit.Chem", convert = TRUE)
 #' @return The canonical SMILES string or NA_character_ if invalid.
 
 process_smiles <- function(smiles_string) {
+  rdkit <- import("rdkit.Chem", convert = TRUE)
   # Use tryCatch to handle errors from RDKit (for invalid SMILES)
   tryCatch({
     # 1. Convert the SMILES string to an RDKit molecule object
@@ -53,6 +54,7 @@ process_smiles <- function(smiles_string) {
 }
 
 is_valid_smiles <- function(smiles_string) {
+  rdkit <- import("rdkit.Chem", convert = TRUE)
   tryCatch({
     mol <- rdkit$MolFromSmiles(smiles_string)
     if (is.null(mol)) {
@@ -69,6 +71,7 @@ collect_features_from_csv <- function(filepath, key , convert_to_canonical = TRU
   
   # --- 1. Pre-process and Validate the Input CSV ---
   library(data.table)
+  rdkit <- import("rdkit.Chem", convert = TRUE)
   message("Reading and validating CSV...")
   
   # Use data.table's fread for fast reading
