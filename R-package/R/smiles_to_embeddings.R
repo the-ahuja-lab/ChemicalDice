@@ -73,6 +73,8 @@ collect_features_from_csv <- function(filepath, key , convert_to_canonical = TRU
   library(data.table)
   rdkit <- import("rdkit.Chem", convert = TRUE)
   message("Reading and validating CSV...")
+
+  URL <- "https://chemicaldice.ahujalab.iiitd.edu.in/stream-features-from-csv"
   
   # Use data.table's fread for fast reading
   df_data <- fread(filepath)
@@ -131,7 +133,7 @@ collect_features_from_csv <- function(filepath, key , convert_to_canonical = TRU
   } else {
     # Save dataframe to a temporary CSV file without canonicalization
     filepath <- tempfile(fileext = ".csv")
-    write.csv(df_data, filepath, row.names = FALSE)
+    write.csv(df_data[,c("SMILES"),drop=FALSE], filepath, row.names = FALSE)
     
     cat(sprintf("Saved SMILES to temp file: %s\n", filepath))
   }
@@ -141,89 +143,85 @@ collect_features_from_csv <- function(filepath, key , convert_to_canonical = TRU
   fwrite(df_data, filepath)
   
   # --- 2. Prepare for Streaming Request ---
-  URL <- "http://chemicaldice.ahujalab.iiitd.edu.in:8001/stream-features-from-csv"
-
-  # The Python `decode` function is not standard, so this is an assumption.
-  
   received_batches <- list()
-  byte_buffer <- raw() # Buffer for incoming raw bytes
-  
-
   NUM_ROWS <- nrow(df_data)
   batch_byte_size <- as.integer(BATCH_SIZE * NUM_FEATURES * FLOAT_SIZE_BYTES)
   total_batches <- ceiling(NUM_ROWS / BATCH_SIZE)
-  
-    headers <- c()
-    if (!is.null(key)) {
-        headers <- add_headers(`X-API-Key` = key)
-    }
-    
-    # POST the file as multipart/form-data
-    resp <- POST(
-        URL,
-        body = list(file = upload_file(filepath, type = "text/csv")),
-        encode = "multipart",
-        headers
-    )
-    
-    if (http_error(resp)) {
-        stop(sprintf("HTTP request failed: %s", status_code(resp)))
-    }
-    
-    message(sprintf("Sent %s. Receiving stream...", filepath))
-    raw_content <- content(resp, "raw")
-    if (length(raw_content) == 0L) {
-        message("No data received.")
-        return(NULL)
-    }
-    
-    # Split raw content into chunks of batch_byte_size
-    total_bytes <- length(raw_content)
-    n_chunks <- ceiling(total_bytes / batch_byte_size)
-    
-    pb <- progress_bar$new(format = "  [:bar] :percent (:current/:total) batches", total = n_chunks, clear = FALSE, width = 60)
-    
-    batches <- vector("list", n_chunks)
-    byte_start <- 1L
-    for (i in seq_len(n_chunks)) {
-        byte_end <- min(total_bytes, byte_start + batch_byte_size - 1L)
-        chunk_raw <- raw_content[byte_start:byte_end]
-        # read float32 values from raw into numeric (R double)
-        con <- rawConnection(chunk_raw, open = "rb")
-        n_values <- length(chunk_raw) / FLOAT_SIZE_BYTES
-        # readBin returns numeric (double) by default; size=4 reads float32
-        values <- readBin(con, what = "numeric", n = as.integer(n_values), size = 4, endian = "little")
-        close(con)
-        # If chunk does not contain a full batch (shouldn't normally happen if server pads),
-        # we will try to reshape by rows (BATCH_SIZE x NUM_FEATURES). If not enough values, pad with NA.
-        expected_vals <- BATCH_SIZE * NUM_FEATURES
-        if (length(values) < expected_vals) {
-            values <- c(values, rep(NA_real_, expected_vals - length(values)))
-        }
-        mat <- matrix(values, nrow = BATCH_SIZE, ncol = NUM_FEATURES, byrow = TRUE)
-        batches[[i]] <- mat
-        pb$tick()
-        byte_start <- byte_end + 1L
-    }
-    pb$terminate()
-    
-    # Concatenate batches and trim padding to NUM_ROWS
-    all_rows <- do.call(rbind, batches)
-    final_array <- all_rows[seq_len(NUM_ROWS), , drop = FALSE]
-    
-    feature_cols <- paste0("CDI", seq_len(ncol(final_array)))
 
-    # 2. Build data frame with those columns
-    df_features <- as.data.frame(final_array)
-    colnames(df_features) <- feature_cols
+  headers <- c()
+  if (!is.null(key)) {
+    headers <- add_headers(`X-API-Key` = key)
+  }
 
-    # 3. Insert SMILES column at the front
-    df_features <- cbind(SMILES = df_data$SMILES, df_features)
-    message("\nStream finished. Concatenating batches...")
-    if (num_invalid > 0) {
-            cat("Invalid SMILES were skipped. Check your input file which is_valid column where False indicates invalid SMILES.")
+  resp <- POST(
+    URL,
+    body = list(file = upload_file(filepath, type = "text/csv")),
+    encode = "multipart",
+    headers
+  )
+
+  if (http_error(resp)) {
+    stop(sprintf("HTTP request failed: %s", status_code(resp)))
+  }
+
+  message(sprintf("Sent %s. Receiving stream...", filepath))
+  raw_content <- content(resp, "raw")
+  if (length(raw_content) == 0L) {
+    message("No data received.")
+    return(NULL)
+  }
+
+  buffer <- raw()
+  pb <- progress_bar$new(format = "  [:bar] :percent (:current/:total) batches", total = total_batches, clear = FALSE, width = 60)
+
+  byte_index <- 1L
+  while (byte_index <= length(raw_content)) {
+    # Append next chunk to buffer
+    buffer <- c(buffer, raw_content[byte_index:min(length(raw_content), byte_index + batch_byte_size - 1L)])
+    byte_index <- byte_index + batch_byte_size
+    
+    # Process all complete batches in buffer
+    while (length(buffer) >= batch_byte_size) {
+      chunk_raw <- buffer[1:batch_byte_size]
+      buffer <- buffer[-(1:batch_byte_size)]
+      
+      con <- rawConnection(chunk_raw, open = "rb")
+      values <- readBin(con, what = "numeric", n = BATCH_SIZE * NUM_FEATURES, size = 4, endian = "little")
+      close(con)
+      
+      mat <- matrix(values, nrow = BATCH_SIZE, ncol = NUM_FEATURES, byrow = TRUE)
+      received_batches[[length(received_batches) + 1]] <- mat
+      pb$tick()
     }
-    return(df_features)  # data frame with NUM_ROWS rows and NUM_FEATURES columns
+  }
+  pb$terminate()
+
+  # Handle leftover partial batch
+  if (length(buffer) > 0) {
+    con <- rawConnection(buffer, open = "rb")
+    values <- readBin(con, what = "numeric", n = length(buffer) / FLOAT_SIZE_BYTES, size = 4, endian = "little")
+    close(con)
+    rows <- length(values) / NUM_FEATURES
+    if (rows > 0) {
+      mat <- matrix(values, nrow = rows, ncol = NUM_FEATURES, byrow = TRUE)
+      received_batches[[length(received_batches) + 1]] <- mat
+    }
+  }
+
+  # Concatenate batches and trim padding to NUM_ROWS
+  all_rows <- do.call(rbind, received_batches)
+  final_array <- all_rows[seq_len(NUM_ROWS), , drop = FALSE]
+
+  feature_cols <- paste0("CDI", seq_len(ncol(final_array)))
+  df_features <- as.data.frame(final_array)
+  colnames(df_features) <- feature_cols
+  df_features <- cbind(SMILES = df_data$SMILES, df_features)
+
+  message("\nStream finished. Concatenating batches...")
+  if (num_invalid > 0) {
+    cat("Invalid SMILES were skipped. Check your input file where is_valid == FALSE.\n")
+  }
+  return(df_features)
 }
 
 
