@@ -71,7 +71,7 @@ pip install -i https://test.pypi.org/simple/ ChemicalDice
 
 To use the ChemicalDice service, you need a free API key.
 
-1.  **Complete the Registration Form**: Fill out the API access request form with your details:
+1. Fill out the API access request form with your details:
     **[https://forms.gle/gPtd8Wqw4akd9Awt5](https://forms.gle/gPtd8Wqw4akd9Awt5)**
 
 2.  You will receive your `API_KEY` via email after your request is approved.
@@ -207,7 +207,7 @@ rdkit <- import("rdkit.Chem", convert = TRUE)
 
 To use the ChemicalDice service, you need a free API key.
 
-1.  **Complete the Registration Form**: Fill out the API access request form with your details.
+1.  Fill out the API access request form with your details.
     **[https://forms.gle/gPtd8Wqw4akd9Awt5](https://forms.gle/gPtd8Wqw4akd9Awt5)**
 
 2.  You will receive your `API_KEY` via email after your request is approved.
