@@ -21,6 +21,7 @@
 ## 📚 Contents
 
 - [Overview](#overview)
+  - [Colab Demo](#colab-demo)
 - [ChemicalDice Python Package](#chemicaldice-python-package-python-interface-to-the-chemical-dice-integrator-api)
   - [Installation](#installation)
   - [Usage](#usage)
@@ -42,6 +43,12 @@ CDI extends the **Chemical Dice Integrator** featurization ecosystem by performi
 -  **2D Molecular Image Features**  
 
 Each compound’s six feature types are combined to create a **single latent embedding** that captures chemical, structural, and biological semantics. These embeddings can be directly used for tasks such as **QSAR modeling**, **virtual screening**, **drug-target interaction prediction**, and **bioactivity clustering**.
+
+### Colab Demo
+
+| Python Users | R Users |
+| :--- | :--- |
+| [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1I6vQ_7SlhagbnXVlg4btWoYal_NcCElt?usp=sharing) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1DpHSlauU-Z-Xj3b3dycSgGImFA4ua4g9?usp=sharing) |
 
 ## **ChemicalDice Python Package: Python Interface to the Chemical Dice Integrator API**
 
