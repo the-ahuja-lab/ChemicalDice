@@ -71,13 +71,10 @@ pip install -i https://test.pypi.org/simple/ ChemicalDice
 
 To use the ChemicalDice service, you need a free API key.
 
-1.  **Find Your IP Address**: The API uses IP whitelisting for security. You must provide your public IP address during registration. You can find it by visiting:
-    **[https://whatismyipaddress.com/](https://whatismyipaddress.com/)**
-
-2.  **Complete the Registration Form**: Fill out the API access request form with your details and IP address:
+1.  **Complete the Registration Form**: Fill out the API access request form with your details:
     **[https://forms.gle/gPtd8Wqw4akd9Awt5](https://forms.gle/gPtd8Wqw4akd9Awt5)**
 
-3.  You will receive your `API_KEY` via email after your request is approved.
+2.  You will receive your `API_KEY` via email after your request is approved.
 
 ### **Usage**
 
@@ -89,7 +86,10 @@ The primary function, `smiles_to_embeddings`, processes a CSV file containing SM
 
 **Step 1: Prepare Your Input CSV**
 
-Your CSV file **must** contain a column named exactly `SMILES`.
+Your input file must meet the following requirements:
+
+* **Column Name:** The file **must** contain a column named exactly `SMILES`.
+* **File Size:** The input file size must not exceed **20 MB**.
 
 **Example `smiles.csv`**:
 ```csv
@@ -131,7 +131,7 @@ This standardized output can be used directly for downstream tasks such as QSAR 
 
 ### **Troubleshooting & Notes**
 
-*   **API Key & IP Whitelisting**: Your API key will only work from the IP address you registered. If your IP address changes (common for home internet connections), you will need to update your registration or use a static IP/VPN.
+*   **API Key**: A valid API key is required to authenticate your requests.
 *   **Backup Your Data**: The input CSV file is modified in-place. Always work on a copy of your **original data** to prevent data loss.
 *   **Invalid SMILES**: Molecules with invalid SMILES will be skipped during processing and will not appear in the output feature dataframe. Check the function's messages or your overwritten CSV for details on which entries were invalid in column `is_valid`.
 *   **Network Connection**: A stable internet connection is required to communicate with the ChemicalDice API.
@@ -175,7 +175,7 @@ remotes::install_github("the-ahuja-lab/ChemicalDice", subdir = "R-package")
 
 #### **A. Configure Python and RDKit**
 
-Before using the package, you must configure the `reticulate` package to use your Python environment that has RDKit installed.
+Before using the package, you must configure the `reticulate` package to use Python environment that has RDKit installed.
 
 ```r
 # Load the necessary R libraries
@@ -187,7 +187,7 @@ library(jsonlite)
 library(curl)
 library(ChemicalDice)
 
-# Point reticulate to your Conda environment (replace 'my_rdkit_env' with your environment name)
+# Point reticulate to Conda environment (replace 'my_rdkit_env' with your environment name)
 use_condaenv("my_rdkit_env", required = TRUE)
 
 #py_require tells reticulate your R session needs RDKit, checks for it
@@ -207,13 +207,10 @@ rdkit <- import("rdkit.Chem", convert = TRUE)
 
 To use the ChemicalDice service, you need a free API key.
 
-1.  **Find Your IP Address**: The API uses IP whitelisting for security. You must provide your public IP address during registration. You can find it by visiting:
-    **[https://whatismyipaddress.com/](https://whatismyipaddress.com/)**
-
-2.  **Complete the Registration Form**: Fill out the API access request form with your details and IP address:
+1.  **Complete the Registration Form**: Fill out the API access request form with your details.
     **[https://forms.gle/gPtd8Wqw4akd9Awt5](https://forms.gle/gPtd8Wqw4akd9Awt5)**
 
-3.  You will receive your `API_KEY` via email after your request is approved.
+2.  You will receive your `API_KEY` via email after your request is approved.
 
 ---
 
@@ -225,7 +222,10 @@ The primary function, `collect_features_from_csv`, processes a CSV file containi
 
 **Step 1: Prepare Your Input CSV**
 
-Your CSV file **must** contain a column named exactly `SMILES`.
+Your input file must meet the following requirements:
+
+* **Column Name:** The file **must** contain a column named exactly `SMILES`.
+* **File Size:** The input file size must not exceed **20 MB**.
 
 **Example `smiles.csv`**:
 ```csv
@@ -272,7 +272,7 @@ This standardized output can be used directly for downstream tasks such as QSAR 
 
 ### **Troubleshooting & Notes**
 
-*   **API Key & IP Whitelisting**: Your API key will only work from the IP address you registered. If your IP address changes (common for home internet connections), you will need to update your registration or use a static IP/VPN.
+*   **API Key**: A valid API key is required to authenticate your requests.
 *   **Backup Your Data**: The input CSV file is modified in-place. Always work on a copy of your **original data** to prevent data loss.
 *   **Invalid SMILES**: Molecules with invalid SMILES will be skipped during processing and will not appear in the output feature dataframe. Check the function's messages or your overwritten CSV for details on which entries were invalid in column `is_valid`.
 *   **Network Connection**: A stable internet connection is required to communicate with the ChemicalDice API.
