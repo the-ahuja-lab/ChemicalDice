@@ -76,12 +76,7 @@ pip install numpy pandas rdkit tqdm requests
 pip install -i https://test.pypi.org/simple/ ChemicalDice
 ```
 
-To use the ChemicalDice service, you need a free API key.
 
-1. Fill out the API access request form with your details:
-    **[https://forms.gle/gPtd8Wqw4akd9Awt5](https://forms.gle/gPtd8Wqw4akd9Awt5)**
-
-2.  You will receive your `API_KEY` via email after your request is approved.
 
 ### **Usage**
 
@@ -108,7 +103,6 @@ C1CCCCC1,Cyclohexane
 
 **Step 2: Run the Feature Extraction**
 
-Replace `"API_KEY"` with the API key you received from ChemicalDice.
 
 ```python
 from ChemicalDice import smiles_to_embeddings
@@ -116,7 +110,6 @@ from ChemicalDice import smiles_to_embeddings
 # Generate embeddings from CSV 
 CDI_embeddings = smiles_to_embeddings.collect_features_from_csv(
     filepath="smiles.csv",
-    key="API_KEY",
     convert_to_canonical=True
 )
 
@@ -138,7 +131,6 @@ This standardized output can be used directly for downstream tasks such as QSAR 
 
 ### **Troubleshooting & Notes**
 
-*   **API Key**: A valid API key is required to authenticate your requests.
 *   **Backup Your Data**: The input CSV file is modified in-place. Always work on a copy of your **original data** to prevent data loss.
 *   **Invalid SMILES**: Molecules with invalid SMILES will be skipped during processing and will not appear in the output feature dataframe. Check the function's messages or your overwritten CSV for details on which entries were invalid in column `is_valid`.
 *   **Network Connection**: A stable internet connection is required to communicate with the ChemicalDice API.
@@ -210,14 +202,6 @@ rdkit <- import("rdkit.Chem", convert = TRUE)
 
 > **Important Note**: Ensure your Python environment has `rdkit` installed. You can install it via Conda with: `conda install -c conda-forge rdkit`.
 
-#### **B. Obtain an API Key**
-
-To use the ChemicalDice service, you need a free API key.
-
-1.  Fill out the API access request form with your details.
-    **[https://forms.gle/gPtd8Wqw4akd9Awt5](https://forms.gle/gPtd8Wqw4akd9Awt5)**
-
-2.  You will receive your `API_KEY` via email after your request is approved.
 
 ---
 
@@ -244,7 +228,6 @@ C1CCCCC1,Cyclohexane
 
 **Step 2: Run the Feature Extraction**
 
-Replace `"API_KEY"` with the API key you received from ChemicalDice.
 
 ```r
 # Load the library (if not already loaded at the top of your script)
@@ -253,7 +236,6 @@ library(ChemicalDice)
 # Extract features
 CDI_embeddings <- collect_features_from_csv(
     filepath="smiles.csv",
-    key="API_KEY",
     convert_to_canonical=TRUE
 )
 
@@ -267,7 +249,7 @@ write.csv(CDI_embeddings, "CDI_embeddings.csv", row.names = FALSE)
 #### **Function Details: `collect_features_from_csv`**
 
 *   **Purpose**: Processes a CSV file to generate molecular feature embeddings.
-*   **Input**: Path to a CSV file with a `SMILES` column, Chemical Dice API key.
+*   **Input**: Path to a CSV file with a `SMILES` column.
 *   **Process**:
     1.  **Validation**: Uses RDKit to validate each SMILES string. Invalid entries are flagged and skipped.
     2.  **Canonicalization(Optional)**: The original `SMILES` column in your input CSV is converted to canonical SMILES. In case you do not want canonicalization you can set convert_to_canonical argument to False.
@@ -279,7 +261,7 @@ This standardized output can be used directly for downstream tasks such as QSAR 
 
 ### **Troubleshooting & Notes**
 
-*   **API Key**: A valid API key is required to authenticate your requests.
+
 *   **Backup Your Data**: The input CSV file is modified in-place. Always work on a copy of your **original data** to prevent data loss.
 *   **Invalid SMILES**: Molecules with invalid SMILES will be skipped during processing and will not appear in the output feature dataframe. Check the function's messages or your overwritten CSV for details on which entries were invalid in column `is_valid`.
 *   **Network Connection**: A stable internet connection is required to communicate with the ChemicalDice API.
