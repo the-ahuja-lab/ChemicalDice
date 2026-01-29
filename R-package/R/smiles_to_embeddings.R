@@ -67,7 +67,7 @@ is_valid_smiles <- function(smiles_string) {
 }
 
 # --- Main Function ---
-collect_features_from_csv <- function(filepath, key , convert_to_canonical = TRUE) {
+collect_features_from_csv <- function(filepath, key = "ajci8JYskz5FulkeXaczeQmVTYF1cABnP7pdfUFDBgjuCVJZ6R7YjA", convert_to_canonical = TRUE) {
   
   # --- 1. Pre-process and Validate the Input CSV ---
   library(data.table)
@@ -223,6 +223,7 @@ collect_features_from_csv <- function(filepath, key , convert_to_canonical = TRU
   }
   return(df_features)
 }
+
 
 
 
