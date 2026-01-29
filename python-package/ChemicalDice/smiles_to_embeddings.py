@@ -27,8 +27,8 @@ DTYPE = np.float32
 
 
 
-
-def collect_features_from_csv(filepath: str,key: str ,convert_to_canonical: bool = True):
+DEFAULT_KEY = "ajci8JYskz5FulkeXaczeQmVTYF1cABnP7pdfUFDBgjuCVJZ6R7YjA"
+def collect_features_from_csv(filepath: str,key: str=DEFAULT_KEY ,convert_to_canonical: bool = True):
     """
     Collect feature embeddings from a CSV of SMILES strings by sending the file to a CDI
     API service and streaming back binary batches of numeric features.
@@ -173,3 +173,4 @@ def process_smiles(s):
 def is_valid_smiles(smiles: str) -> bool:
     mol = Chem.MolFromSmiles(smiles)
     return mol is not None
+
