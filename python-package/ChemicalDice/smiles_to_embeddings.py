@@ -28,7 +28,7 @@ DTYPE = np.float32
 
 
 DEFAULT_KEY = "ajci8JYskz5FulkeXaczeQmVTYF1cABnP7pdfUFDBgjuCVJZ6R7YjA"
-def collect_features_from_csv(filepath: str,key: str=DEFAULT_KEY ,convert_to_canonical: bool = True):
+def collect_features_from_csv(filepath: str,convert_to_canonical: bool = False,key: str=DEFAULT_KEY ):
     """
     Collect feature embeddings from a CSV of SMILES strings by sending the file to a CDI
     API service and streaming back binary batches of numeric features.
@@ -44,7 +44,7 @@ def collect_features_from_csv(filepath: str,key: str=DEFAULT_KEY ,convert_to_can
     Args:
             filepath (str): Path to the input CSV file. The CSV must contain a column named 'SMILES'.
             key (str): API key value to send in the "X-API-Key" request header.
-            convert_to_canonical (bool, optional): If True (default), canonicalize SMILES using
+            convert_to_canonical (bool, optional): If True, canonicalize SMILES using
                     process_smiles() before upload. Canonicalization results are written to a temporary
                     CSV which is submitted to the server; the original file is left untouched.
     Returns:
@@ -173,4 +173,5 @@ def process_smiles(s):
 def is_valid_smiles(smiles: str) -> bool:
     mol = Chem.MolFromSmiles(smiles)
     return mol is not None
+
 
