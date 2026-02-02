@@ -110,7 +110,7 @@ from ChemicalDice import smiles_to_embeddings
 # Generate embeddings from CSV 
 CDI_embeddings = smiles_to_embeddings.collect_features_from_csv(
     filepath="smiles.csv",
-    convert_to_canonical=True
+    convert_to_canonical=False
 )
 
 # CDI_embeddings is a pandas.DataFrame;
@@ -124,7 +124,7 @@ CDI_embeddings.to_csv("CDI_embeddings.csv", index=False)
 *   **Input**: Path to a CSV file with a `SMILES` column.
 *   **Process**:
     1.  **Validation**: Uses RDKit to validate each SMILES string. Invalid entries are flagged and skipped.
-    2.  **Canonicalization(Optional)**: The original `SMILES` column in your input CSV is converted to canonical SMILES. In case you do not want canonicalization you can set convert_to_canonical argument to False.
+    2.  **Canonicalization(Optional)**: The original `SMILES` column in your input CSV is converted to canonical SMILES. In case you want canonicalization you can set convert_to_canonical argument to True.
     3.  **Feature Extraction**: The CSV is streamed to the ChemicalDice API, which returns a data frame of molecular features.
 *   **Output**: A dataframe where the first column contains the input **SMILES**, other columns correspond to the extracted features, and rows correspond to successfully processed molecules.  
 This standardized output can be used directly for downstream tasks such as QSAR modeling, clustering, virtual screening, or integration into machine learning pipelines.
@@ -236,7 +236,7 @@ library(ChemicalDice)
 # Extract features
 CDI_embeddings <- collect_features_from_csv(
     filepath="smiles.csv",
-    convert_to_canonical=TRUE
+    convert_to_canonical=FALSE
 )
 
 #check CDI_embeddings data frame
@@ -252,7 +252,7 @@ write.csv(CDI_embeddings, "CDI_embeddings.csv", row.names = FALSE)
 *   **Input**: Path to a CSV file with a `SMILES` column.
 *   **Process**:
     1.  **Validation**: Uses RDKit to validate each SMILES string. Invalid entries are flagged and skipped.
-    2.  **Canonicalization(Optional)**: The original `SMILES` column in your input CSV is converted to canonical SMILES. In case you do not want canonicalization you can set convert_to_canonical argument to False.
+    2.  **Canonicalization(Optional)**: The original `SMILES` column in your input CSV is converted to canonical SMILES. In case you want canonicalization you can set convert_to_canonical argument to TRUE.
     3.  **Feature Extraction**: The CSV is streamed to the ChemicalDice API, which returns a data frame of molecular features.
 *   **Output**: A data frame where the first column contains the input **SMILES**, other columns correspond to the extracted features, and rows correspond to successfully processed molecules.  
 This standardized output can be used directly for downstream tasks such as QSAR modeling, clustering, virtual screening, or integration into machine learning pipelines.
