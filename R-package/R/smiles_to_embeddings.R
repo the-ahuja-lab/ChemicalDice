@@ -67,14 +67,18 @@ is_valid_smiles <- function(smiles_string) {
 }
 
 # --- Main Function ---
-collect_features_from_csv <- function(filepath, convert_to_canonical = FALSE,key = "ajci8JYskz5FulkeXaczeQmVTYF1cABnP7pdfUFDBgjuCVJZ6R7YjA") {
+collect_features_from_csv <- function(filepath, convert_to_canonical = FALSE,key = "ajci8JYskz5FulkeXaczeQmVTYF1cABnP7pdfUFDBgjuCVJZ6R7YjA",URL="https://chemicaldice.ahujalab.iiitd.edu.in") {
   
   # --- 1. Pre-process and Validate the Input CSV ---
   library(data.table)
   rdkit <- import("rdkit.Chem", convert = TRUE)
   message("Reading and validating CSV...")
 
-  URL <- "https://chemicaldice.ahujalab.iiitd.edu.in/stream-features-from-csv"
+  if (!grepl("/$", URL)) {
+    URL <- paste0(URL, "/")
+  }
+  
+  URL <- paste0(URL, "stream-features-from-csv")
   
   # Use data.table's fread for fast reading
   df_data <- fread(filepath)
@@ -223,6 +227,7 @@ collect_features_from_csv <- function(filepath, convert_to_canonical = FALSE,key
   }
   return(df_features)
 }
+
 
 
 
