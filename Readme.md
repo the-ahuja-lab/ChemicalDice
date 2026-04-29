@@ -1,5 +1,5 @@
 # **Chemical Dice Integrator (CDI)**  
-**CDI (Chemical Dice Integrator)** is a high-performance deep learning framework designed to unify heterogeneous chemical representations into a single, high information rich latent space. By fusing six complementary molecular embeddings, CDI produces a consolidated vector optimized for large-scale cheminformatics, bioinformatics, and AI-driven molecular discovery tasks. 
+**CDI (Chemical Dice Integrator)** is a high-performance deep learning framework designed to unify heterogeneous chemical representations into a single, high information rich latent space. By fusing five complementary molecular embeddings, CDI produces a consolidated vector optimized for large-scale cheminformatics, bioinformatics, and AI-driven molecular discovery tasks. 
 
 
 ---
@@ -33,16 +33,15 @@
 
 ##  **Overview**
 
-CDI extends the **Chemical Dice Integrator** featurization ecosystem by performing unsupervised integration of **six distinct molecular embeddings**:
+CDI extends the **Chemical Dice Integrator** featurization ecosystem by performing unsupervised integration of **five distinct molecular embeddings**:
 
--  **Quantum Descriptors**  
 -  **Bioactivity Signatures**  
 -  **Language Model Embeddings**  
 -  **Graph-Derived Representations**  
 -  **Physicochemical Profiles**  
 -  **2D Molecular Image Features**  
 
-Each compound’s six feature types are combined to create a **single latent embedding** that captures chemical, structural, and biological semantics. These embeddings can be directly used for tasks such as **QSAR modeling**, **virtual screening**, **drug-target interaction prediction**, and **bioactivity clustering**.
+Each compound’s five feature types are combined to create a **single latent embedding** that captures chemical, structural, and biological semantics. these embeddings can be directly used for tasks such as **QSAR modeling**, **virtual screening**, **drug-target interaction prediction**, and **bioactivity clustering**.
 
 ### Colab Demo
 
@@ -67,7 +66,7 @@ Each compound’s six feature types are combined to create a **single latent emb
 Open terminal or jupyter notebook run the following command to install all required python packages.
 
 ```bash
-pip install numpy pandas rdkit tqdm requests
+
 ```
 
 #### **3. Install the ChemicalDice Python Package**
@@ -267,3 +266,15 @@ This standardized output can be used directly for downstream tasks such as QSAR 
 *   **Network Connection**: A stable internet connection is required to communicate with the ChemicalDice API.
 
 For technical issues, please ensure all prerequisites are met and your configuration is correct. For API-related problems, contact the ChemicalDice service administrators.
+
+---
+
+## **CDI Bot**
+**Chemical Dice Integrator — Conversational Molecular Embedding Platform**
+
+CDI Bot is a fully containerised, LLM-powered web application that gives researchers and chemists a natural-language interface to the Chemical Dice Integrator (CDI).
+
+> [!TIP]
+> **Watch the CDI Bot in action:**
+> <iframe width="100%" height="400" src="https://www.youtube.com/embed/3NaBBTviEsA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
