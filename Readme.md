@@ -17,6 +17,12 @@
   </a>
 </p>
 
+<p align="center">
+  <a href="https://the-ahuja-lab.github.io/ChemicalDice/">
+    <img src="https://img.shields.io/badge/Documentation-Complete-blue?style=for-the-badge">
+  </a>
+</p>
+
 ---
 ## 📚 Contents
 
@@ -29,6 +35,7 @@
   - [Installation](#installation-1)
   - [Configuration & Setup](#configuration--setup)
   - [Usage](#usage-1)
+- [CDI Bot](#cdi-bot)
 - [Troubleshooting & Notes](#troubleshooting--notes)
 
 ##  **Overview**
@@ -277,4 +284,6 @@ CDI Bot is a fully containerised, LLM-powered web application that gives researc
 > [!TIP]
 > **Watch the CDI Bot in action:**
 > [![Watch the video](https://img.youtube.com/vi/3NaBBTviEsA/0.jpg)](https://www.youtube.com/watch?v=3NaBBTviEsA)
+---
 
+For all other detailed information, please visit our **[complete documentation](https://the-ahuja-lab.github.io/ChemicalDice/)**.
