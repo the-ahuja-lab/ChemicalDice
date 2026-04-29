@@ -1,0 +1,13 @@
+# Utilities
+
+Internal logic and CLI representations securely enforcing separation limits on executing code arrays dynamically.
+
+## Unified CLI Sequence
+The central package exposes standard parameters directly natively:
+```bash
+cdi fetch ...
+cdi train-basic ...
+cdi train-gen ...
+cdi serve ...
+```
+These hooks are strictly contained natively preventing execution bleed over non-installed tiers natively.
