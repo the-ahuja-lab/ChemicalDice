@@ -54,7 +54,7 @@ Each compound’s five feature types are combined to create a **single latent em
 Open terminal or jupyter notebook run the following command to install all required python packages.
 
 ```bash
-
+pip install rdkit pandas numpy tqdm requests
 ```
 
 #### **3. Install the ChemicalDice Python Package**
