@@ -13,31 +13,33 @@
       
       
       
+        <link rel="prev" href="../quickstart/">
       
-        <link rel="next" href="./installation/">
+      
+        <link rel="next" href="../descriptors/">
       
       
         
       
       
-      <link rel="icon" href="./assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="zensical-0.0.30">
     
     
       
-        <title>Chemical Dice Integrator - ChemicalDice Integrator</title>
+        <title>Architecture of ChemicalDice Integrator (CDI) - ChemicalDice Integrator</title>
       
     
     
       
         
       
-      <link rel="stylesheet" href="./assets/stylesheets/modern/main.3b031116.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/modern/main.3b031116.min.css">
       
         
           
         
-        <link rel="stylesheet" href="./assets/stylesheets/modern/palette.dfe2e883.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/modern/palette.dfe2e883.min.css">
       
       
 
@@ -56,7 +58,7 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
       
 
@@ -81,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#chemical-dice-integrator" class="md-skip">
+        <a href="#architecture-of-chemicaldice-integrator-cdi" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +99,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="" title="ChemicalDice Integrator" class="md-header__button md-logo" aria-label="ChemicalDice Integrator" data-md-component="logo">
+    <a href="./.." title="ChemicalDice Integrator" class="md-header__button md-logo" aria-label="ChemicalDice Integrator" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
@@ -117,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Chemical Dice Integrator
+              Architecture of ChemicalDice Integrator (CDI)
             
           </span>
         </div>
@@ -196,7 +198,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="" title="ChemicalDice Integrator" class="md-nav__button md-logo" aria-label="ChemicalDice Integrator" data-md-component="logo">
+    <a href="./.." title="ChemicalDice Integrator" class="md-nav__button md-logo" aria-label="ChemicalDice Integrator" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
@@ -211,13 +213,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <a href="" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="./.." class="md-nav__link">
         
   
   
@@ -233,7 +232,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -245,7 +243,7 @@
   
   
     <li class="md-nav__item">
-      <a href="./installation/" class="md-nav__link">
+      <a href="../installation/" class="md-nav__link">
         
   
   
@@ -272,7 +270,7 @@
   
   
     <li class="md-nav__item">
-      <a href="./quickstart/" class="md-nav__link">
+      <a href="../quickstart/" class="md-nav__link">
         
   
   
@@ -296,10 +294,13 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="./architecture/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
         
   
   
@@ -315,6 +316,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -326,7 +328,7 @@
   
   
     <li class="md-nav__item">
-      <a href="./descriptors/" class="md-nav__link">
+      <a href="../descriptors/" class="md-nav__link">
         
   
   
@@ -353,7 +355,7 @@
   
   
     <li class="md-nav__item">
-      <a href="./training/" class="md-nav__link">
+      <a href="../training/" class="md-nav__link">
         
   
   
@@ -380,7 +382,7 @@
   
   
     <li class="md-nav__item">
-      <a href="./evaluation/" class="md-nav__link">
+      <a href="../evaluation/" class="md-nav__link">
         
   
   
@@ -407,7 +409,7 @@
   
   
     <li class="md-nav__item">
-      <a href="./assistant/" class="md-nav__link">
+      <a href="../assistant/" class="md-nav__link">
         
   
   
@@ -504,7 +506,7 @@
   
   
     <li class="md-nav__item">
-      <a href="./sota_analysis/" class="md-nav__link">
+      <a href="../sota_analysis/" class="md-nav__link">
         
   
   
@@ -532,7 +534,7 @@
   
   
     <li class="md-nav__item">
-      <a href="./representative_chembl/" class="md-nav__link">
+      <a href="../representative_chembl/" class="md-nav__link">
         
   
   
@@ -560,7 +562,7 @@
   
   
     <li class="md-nav__item">
-      <a href="./ablation_analysis/" class="md-nav__link">
+      <a href="../ablation_analysis/" class="md-nav__link">
         
   
   
@@ -588,7 +590,7 @@
   
   
     <li class="md-nav__item">
-      <a href="./replacement_analysis/" class="md-nav__link">
+      <a href="../replacement_analysis/" class="md-nav__link">
         
   
   
@@ -616,7 +618,7 @@
   
   
     <li class="md-nav__item">
-      <a href="./ood_analysis/" class="md-nav__link">
+      <a href="../ood_analysis/" class="md-nav__link">
         
   
   
@@ -644,7 +646,7 @@
   
   
     <li class="md-nav__item">
-      <a href="./ldc_analysis/" class="md-nav__link">
+      <a href="../ldc_analysis/" class="md-nav__link">
         
   
   
@@ -672,7 +674,7 @@
   
   
     <li class="md-nav__item">
-      <a href="./benchmark/" class="md-nav__link">
+      <a href="../benchmark/" class="md-nav__link">
         
   
   
@@ -700,7 +702,7 @@
   
   
     <li class="md-nav__item">
-      <a href="./similarity/" class="md-nav__link">
+      <a href="../similarity/" class="md-nav__link">
         
   
   
@@ -795,7 +797,7 @@
   
   
     <li class="md-nav__item">
-      <a href="./tutorials/basic_usage/" class="md-nav__link">
+      <a href="../tutorials/basic_usage/" class="md-nav__link">
         
   
   
@@ -823,7 +825,7 @@
   
   
     <li class="md-nav__item">
-      <a href="./api_reference/" class="md-nav__link">
+      <a href="../api_reference/" class="md-nav__link">
         
   
   
@@ -851,7 +853,7 @@
   
   
     <li class="md-nav__item">
-      <a href="./r_api/" class="md-nav__link">
+      <a href="../r_api/" class="md-nav__link">
         
   
   
@@ -913,22 +915,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#modular-architecture" class="md-nav__link">
+  <a href="#1-cdi-basic-multimodal-fusion-engine" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Modular Architecture
+        1. CDI-Basic: Multimodal Fusion Engine
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Modular Architecture">
+    <nav class="md-nav" aria-label="1. CDI-Basic: Multimodal Fusion Engine">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-minimal" class="md-nav__link">
+  <a href="#tier-1-semantic-commonality-autoencoders-sca" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Minimal 🟢
+        Tier 1: Semantic Commonality Autoencoders (SCA)
       
     </span>
   </a>
@@ -936,21 +938,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-training" class="md-nav__link">
+  <a href="#tier-2-super-embedding-autoencoder-sea" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Training 🟠
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-deployment" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Deployment 🔴
+        Tier 2: Super-Embedding Autoencoder (SEA)
       
     </span>
   </a>
@@ -963,10 +954,88 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#next-steps" class="md-nav__link">
+  <a href="#2-cdi-generalised-sequence-to-embedding-mapping" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Next Steps
+        2. CDI-Generalised: Sequence-to-Embedding Mapping
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. CDI-Generalised: Sequence-to-Embedding Mapping">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mamba-state-space-model-ssm-core" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mamba State-Space Model (SSM) Core
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-the-six-orthogonal-modalities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. The Six Orthogonal Modalities
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-mathematical-formulation-loss-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Mathematical Formulation &amp; Loss Functions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Mathematical Formulation &amp; Loss Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cdi-basic-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CDI-Basic Optimization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cdi-generalised-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CDI-Generalised Optimization
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#technical-specifications-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Technical Specifications Summary
       
     </span>
   </a>
@@ -996,25 +1065,107 @@
                 
                   
 
-<h1 id="chemical-dice-integrator">Chemical Dice Integrator<a class="headerlink" href="#chemical-dice-integrator" title="Permanent link">&para;</a></h1>
-<p><strong>ChemicalDice Integrator (CDI)</strong> is a high-performance deep learning framework designed to unify heterogeneous chemical representations into a single, high information rich latent space. By fusing six complementary molecular embeddings, CDI produces a consolidated vector optimized for large-scale cheminformatics, bioinformatics, and AI-driven molecular discovery tasks.</p>
+<h1 id="architecture-of-chemicaldice-integrator-cdi">Architecture of ChemicalDice Integrator (CDI)<a class="headerlink" href="#architecture-of-chemicaldice-integrator-cdi" title="Permanent link">&para;</a></h1>
+<p>The Chemical Dice Integrator (CDI) is a hierarchical, multimodal deep learning framework designed to unify diverse molecular representations into a single, high-information latent space. The architecture is split into two primary operational modes: <strong>CDI-Basic</strong> for unsupervised integration and <strong>CDI-Generalised</strong> for scalable, sequence-based inference.</p>
 <hr />
-<h2 id="modular-architecture">Modular Architecture<a class="headerlink" href="#modular-architecture" title="Permanent link">&para;</a></h2>
-<p>We understand the computational burden inherent to scientific computing. CDI is strictly engineered into three installable modules utilizing powerful lazy-loading techniques:</p>
-<h3 id="1-minimal">1. Minimal 🟢<a class="headerlink" href="#1-minimal" title="Permanent link">&para;</a></h3>
-<p>Run real-time API client hooks effortlessly without PyTorch or massive computational graphs. Designed purely for extracting feature-sets off our cloud clusters.</p>
-<h3 id="2-training">2. <strong><a href="training/">Training</a></strong> 🟠<a class="headerlink" href="#2-training" title="Permanent link">&para;</a></h3>
-<p>Abstracts deep HDF5 preprocessing and multi-modal Autoencoder/Mamba network alignments into object-oriented classes. Complete dataset optimization out-of-core.</p>
-<h3 id="3-deployment">3. Deployment 🔴<a class="headerlink" href="#3-deployment" title="Permanent link">&para;</a></h3>
-<p>Harnesses highly scalable ASGI (FastAPI) servers to host structural generalizations asynchronously, matching the execution performance of enterprise deployments.</p>
-<hr />
-<h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
+<h2 id="1-cdi-basic-multimodal-fusion-engine">1. CDI-Basic: Multimodal Fusion Engine<a class="headerlink" href="#1-cdi-basic-multimodal-fusion-engine" title="Permanent link">&para;</a></h2>
+<p>CDI-Basic is the foundational engine that performs the unsupervised integration of six orthogonal molecular modalities. It utilizes a <strong>two-tiered hierarchical autoencoder</strong> architecture to learn deep semantic relationships between different views of a molecule.</p>
+<h3 id="tier-1-semantic-commonality-autoencoders-sca">Tier 1: Semantic Commonality Autoencoders (SCA)<a class="headerlink" href="#tier-1-semantic-commonality-autoencoders-sca" title="Permanent link">&para;</a></h3>
+<p>In the first tier, CDI employs six dedicated autoencoders. Each SCA is responsible for learning inter-modality dependencies through a <strong>Leave-One-Out (LOO)</strong> reconstruction objective:</p>
 <ul>
-<li>Head to the <strong><a href="installation/">Installation Matrix</a></strong> to correctly configure your setup.</li>
-<li>Jump straight into the <strong><a href="quickstart/">Quickstart</a></strong> payload.</li>
-<li>Learn about the <strong><a href="training/">Training Specifics</a></strong> for Basic and Generalised models.</li>
-<li>Review our multi-agent <strong><a href="architecture/">Architecture</a></strong> diagrams mapping Autoencoders to State-Spaces natively.</li>
+<li><strong>Input</strong>: Concatenated latent information from five modalities.</li>
+<li><strong>Target</strong>: Reconstruction of the sixth (omitted) modality.</li>
+<li><strong>Outcome</strong>: This process enforces the discovery of shared inter-modality information, yielding six latent subspaces that capture the "semantic overlap" between feature domains.</li>
 </ul>
+<h3 id="tier-2-super-embedding-autoencoder-sea">Tier 2: Super-Embedding Autoencoder (SEA)<a class="headerlink" href="#tier-2-super-embedding-autoencoder-sea" title="Permanent link">&para;</a></h3>
+<p>The outputs from the six SCAs are concatenated and fed into the Super-Embedding Autoencoder.</p>
+<ul>
+<li><strong>Function</strong>: Compress the consolidated latent vectors into a single, 8192-dimensional <strong>Super Embedding</strong>.</li>
+<li><strong>Objective</strong>: Minimize global reconstruction error and ensure a cohesive, unified representation that preserves the unique characteristics of each source modality while capturing their synergy.</li>
+</ul>
+<hr />
+<h2 id="2-cdi-generalised-sequence-to-embedding-mapping">2. CDI-Generalised: Sequence-to-Embedding Mapping<a class="headerlink" href="#2-cdi-generalised-sequence-to-embedding-mapping" title="Permanent link">&para;</a></h2>
+<p>While CDI-Basic provides the "gold standard" integrated embedding, it requires all six source features to be computed beforehand—a significant computational bottleneck. <strong>CDI-Generalised</strong> solves this by providing a direct pathway from chemical structure to the integrated space.</p>
+<h3 id="mamba-state-space-model-ssm-core">Mamba State-Space Model (SSM) Core<a class="headerlink" href="#mamba-state-space-model-ssm-core" title="Permanent link">&para;</a></h3>
+<p>CDI-Generalised leverages a modern <strong>Mamba SSM</strong> architecture (based on the SMI-SSED framework) to map raw SMILES strings directly into the 8192-D CDI space.</p>
+<ul>
+<li><strong>Efficiency</strong>: Bypasses the need to generate descriptor-heavy inputs (like MOPAC or Mordred) during inference.</li>
+<li><strong>Training</strong>: The model is trained using a supervised regression objective to ensure both geometric and angular alignment with the pre-trained CDI-Basic targets.</li>
+<li><strong>Scalability</strong>: Enables high-throughput molecular screening with the latency of a single model while maintaining the breadth of the original multimodal ensemble.</li>
+</ul>
+<hr />
+<h2 id="3-the-six-orthogonal-modalities">3. The Six Orthogonal Modalities<a class="headerlink" href="#3-the-six-orthogonal-modalities" title="Permanent link">&para;</a></h2>
+<p>CDI integrates information from across the chemical intelligence spectrum:</p>
+<ol>
+<li><strong>Quantum-Mechanical (MOPAC)</strong>: Captures electronic properties and orbital landscapes.</li>
+<li><strong>Topological/Graph-Based (GROVER)</strong>: Maps atomic connections and structural motifs.</li>
+<li><strong>Linguistic/Language-Based (ChemBERTa)</strong>: Extracts transformer-based semantics from SMILES syntax.</li>
+<li><strong>Biological/Bioactivity (Signaturizer)</strong>: Represents pre-trained bioactivity signatures and profiles.</li>
+<li><strong>Visual/Image-Based (ImageMol)</strong>: Learns 2D topological encodings via visual ResNet features.</li>
+<li><strong>Physicochemical (Mordred)</strong>: Provides deterministic mathematical descriptors defining geometry and chemistry.</li>
+</ol>
+<hr />
+<h2 id="4-mathematical-formulation-loss-functions">4. Mathematical Formulation &amp; Loss Functions<a class="headerlink" href="#4-mathematical-formulation-loss-functions" title="Permanent link">&para;</a></h2>
+<p>The hierarchical training protocol of ChemicalDice is governed by specific objective functions that ensure high-fidelity representation learning.</p>
+<h3 id="cdi-basic-optimization">CDI-Basic Optimization<a class="headerlink" href="#cdi-basic-optimization" title="Permanent link">&para;</a></h3>
+<p>The total loss for the fusion engine combines the reconstruction and alignment objectives of both tiers:</p>
+<div class="arithmatex">\[
+\mathcal{L}_{total} = \frac{1}{6} \sum_{j=1}^{6} \left( \mathcal{L}_{RE}(\mathbf{a}_j^i, \tilde{\mathbf{a}}_j^i) + \mathcal{L}_{MSE}(\mathbf{p}_j^i, \mathbf{d}_j^i) \right) + \mathcal{L}_{SEA}
+\]</div>
+<ul>
+<li><span class="arithmatex">\(\mathcal{L}_{RE}\)</span>: Tier 1 reconstruction error for the leave-one-out modality.</li>
+<li><span class="arithmatex">\(\mathcal{L}_{MSE}\)</span>: Mean Squared Error for semantic alignment between latent spaces.</li>
+<li><span class="arithmatex">\(\mathcal{L}_{SEA}\)</span>: Global reconstruction loss for the Tier 2 super-embedding.</li>
+</ul>
+<h3 id="cdi-generalised-optimization">CDI-Generalised Optimization<a class="headerlink" href="#cdi-generalised-optimization" title="Permanent link">&para;</a></h3>
+<p>The Mamba-based mapping is optimized to align the sequence-derived embeddings with the established CDI manifold:</p>
+<div class="arithmatex">\[
+\mathcal{L}_{SSM} = \frac{1}{N \times D} \sum_{i=1}^{N} \sum_{j=1}^{D} (E_{target, ij} - E_{pred, ij})^2
+\]</div>
+<ul>
+<li><span class="arithmatex">\(N\)</span>: Batch size.</li>
+<li><span class="arithmatex">\(D\)</span>: Embedding dimension (fixed at 8192).</li>
+<li><span class="arithmatex">\(E_{target}\)</span>: Gold-standard embeddings from CDI-Basic.</li>
+<li><span class="arithmatex">\(E_{pred}\)</span>: Predicted embeddings from the Mamba encoder.</li>
+</ul>
+<hr />
+<h2 id="technical-specifications-summary">Technical Specifications Summary<a class="headerlink" href="#technical-specifications-summary" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Component</th>
+<th style="text-align: left;">Architecture</th>
+<th style="text-align: left;">Dimensionality</th>
+<th style="text-align: left;">Primary Objective</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>CDI-Basic</strong></td>
+<td style="text-align: left;">Two-Tiered Autoencoder</td>
+<td style="text-align: left;">8192-D</td>
+<td style="text-align: left;">Multimodal Representation Fusion</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CDI-Generalised</strong></td>
+<td style="text-align: left;">Mamba State-Space Model</td>
+<td style="text-align: left;">8192-D</td>
+<td style="text-align: left;">Sequence-to-Latent Mapping</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Training Scale</strong></td>
+<td style="text-align: left;">~1.09 Billion Parameters</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;">Global Semantic Integration</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Inference Mode</strong></td>
+<td style="text-align: left;">Sequence-based (SMILES)</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;">High-throughput Scalability</td>
+</tr>
+</tbody>
+</table>
 
 
 
@@ -1053,15 +1204,31 @@
       
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
+          
+          <a href="../quickstart/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Quickstart">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Quickstart
+              </div>
+            </div>
+          </a>
+        
         
           
-          <a href="./installation/" class="md-footer__link md-footer__link--next" aria-label="Next: Installation">
+          <a href="../descriptors/" class="md-footer__link md-footer__link--next" aria-label="Next: Descriptors">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Installation
+                Descriptors
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1103,10 +1270,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate":null,"base":".","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.top","navigation.tracking","search.highlight"],"search":"./assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+      <script id="__config" type="application/json">{"annotate":null,"base":"..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.top","navigation.tracking","search.highlight"],"search":"../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
     
     
-      <script src="./assets/javascripts/bundle.66be65ca.min.js"></script>
+      <script src="../assets/javascripts/bundle.66be65ca.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       

@@ -1,0 +1,1485 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for the ChemicalDice Integrator framework.">
+      
+      
+        <meta name="author" content="<your name here>">
+      
+      
+      
+        <link rel="prev" href="../tutorials/basic_usage/">
+      
+      
+        <link rel="next" href="../r_api/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.30">
+    
+    
+      
+        <title>ChemicalDice API & Module Reference - ChemicalDice Integrator</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../assets/stylesheets/modern/main.3b031116.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chemicaldice-api-module-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="./.." title="ChemicalDice Integrator" class="md-header__button md-logo" aria-label="ChemicalDice Integrator" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ChemicalDice Integrator
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ChemicalDice API &amp; Module Reference
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="./.." title="ChemicalDice Integrator" class="md-nav__button md-logo" aria-label="ChemicalDice Integrator" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    ChemicalDice Integrator
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="./.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../descriptors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Descriptors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../training/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Training
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../evaluation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evaluation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CDI Bot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Analysis
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Analysis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sota_analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SOTA Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../representative_chembl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Representative ChEMBL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ablation_analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ablation Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../replacement_analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Replacement Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ood_analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OOD Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ldc_analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LDC Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../benchmark/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benchmark
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../similarity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Similarity Search
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorials
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tutorials
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/basic_usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basic Usage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../r_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    R Package API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                    <div class="md-sidebar-button__wrapper">
+                      <label class="md-sidebar-button" for="__toc"></label>
+                    </div>
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-descriptors-module-chemicaldicedescriptors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Descriptors Module (ChemicalDice.descriptors)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Descriptors Module (ChemicalDice.descriptors)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-calculate_descriptors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 calculate_descriptors
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-convert_to_hdf5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 convert_to_hdf5
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-training-module-chemicaldicetraining" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Training Module (ChemicalDice.training)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Training Module (ChemicalDice.training)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-train_basic_cdi-cdi-basic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 train_basic_cdi (CDI-Basic)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-train_generalised_cdi-cdi-generalised" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 train_generalised_cdi (CDI-Generalised)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-experiments-module-chemicaldiceexperiments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Experiments Module (ChemicalDice.experiments)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Experiments Module (ChemicalDice.experiments)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-run_ood_analysis-ood" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 run_ood_analysis (OOD)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-run_ldc_analysis-ldc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 run_ldc_analysis (LDC)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-sota-pipeline-module-chemicaldicesota_pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. SOTA Pipeline Module (ChemicalDice.sota_pipeline)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. SOTA Pipeline Module (ChemicalDice.sota_pipeline)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-evaluatebenchmark" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Evaluate.benchmark
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-clustering-module-chemicaldiceclustering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Clustering Module (ChemicalDice.clustering)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Clustering Module (ChemicalDice.clustering)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-density_aware_sampling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 density_aware_sampling
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-main-cli-hub-chemicaldicecli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Main CLI Hub (ChemicalDice.cli)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="./.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../tutorials/basic_usage/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Tutorials
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+<h1 id="chemicaldice-api-module-reference">ChemicalDice API &amp; Module Reference<a class="headerlink" href="#chemicaldice-api-module-reference" title="Permanent link">&para;</a></h1>
+<p>This section provides a comprehensive reference for the core modules, CLI commands, and Python API functions available in the ChemicalDice Integrator (CDI) package.</p>
+<hr />
+<h2 id="1-descriptors-module-chemicaldicedescriptors">1. Descriptors Module (<code>ChemicalDice.descriptors</code>)<a class="headerlink" href="#1-descriptors-module-chemicaldicedescriptors" title="Permanent link">&para;</a></h2>
+<p>This module handles the generation and processing of molecular descriptors from raw SMILES strings.</p>
+<h3 id="11-calculate_descriptors">1.1 <code>calculate_descriptors</code><a class="headerlink" href="#11-calculate_descriptors" title="Permanent link">&para;</a></h3>
+<p>Calculates diverse molecular descriptors (Quantum, Graph, Image, LLM, Bioactivity, Physicochemical) from an input CSV.</p>
+<p><strong>Python API:</strong>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ChemicalDice.descriptors.calculate</span><span class="w"> </span><span class="kn">import</span> <span class="n">calculate_descriptors</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">calculate_descriptors</span><span class="p">(</span><span class="n">input_file</span><span class="o">=</span><span class="s2">&quot;smiles.csv&quot;</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">=</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="n">descriptors</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;mordred&quot;</span><span class="p">,</span> <span class="s2">&quot;mopac&quot;</span><span class="p">])</span>
+</span></code></pre></div></p>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>input_file</code> (str): Path to input CSV file containing a <code>SMILES</code> column.</li>
+<li><code>output_dir</code> (str, default: <code>"Chemicaldice_data"</code>): Directory to save output CSVs.</li>
+<li><code>descriptors</code> (list, default: <code>["all"]</code>): Descriptors to compute. Options: <code>["mopac", "grover", "imagemol", "chemberta", "signaturizer", "mordred", "all"]</code>.</li>
+</ul>
+<p><strong>Output:</strong> Individual <code>.csv</code> files for each descriptor saved in <code>output_dir</code>.</p>
+<h3 id="12-convert_to_hdf5">1.2 <code>convert_to_hdf5</code><a class="headerlink" href="#12-convert_to_hdf5" title="Permanent link">&para;</a></h3>
+<p>Merges multiple descriptor CSVs, filters for common IDs, imputes missing values (KNN), and saves as chunked HDF5 files for fast I/O during training.</p>
+<p><strong>Python API:</strong>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ChemicalDice.descriptors.convert</span><span class="w"> </span><span class="kn">import</span> <span class="n">convert_to_hdf5</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">convert_to_hdf5</span><span class="p">(</span><span class="n">input_dir</span><span class="o">=</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">=</span><span class="s2">&quot;data_h5&quot;</span><span class="p">,</span> <span class="n">chunk_size</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">knn_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</span></code></pre></div></p>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>input_dir</code> (str, default: <code>"Chemicaldice_data"</code>): Directory containing descriptor CSVs.</li>
+<li><code>output_dir</code> (str, default: <code>"Chemicaldice_data"</code>): Directory to save H5 files.</li>
+<li><code>chunk_size</code> (int, default: <code>10000</code>): Chunk size for pandas/HDF5 I/O processing.</li>
+<li><code>knn_neighbors</code> (int, default: <code>5</code>): Neighbors used for Mordred missing value imputation.</li>
+</ul>
+<p><strong>Output:</strong> Individual <code>.h5</code> files optimized for multi-modal training.</p>
+<hr />
+<h2 id="2-training-module-chemicaldicetraining">2. Training Module (<code>ChemicalDice.training</code>)<a class="headerlink" href="#2-training-module-chemicaldicetraining" title="Permanent link">&para;</a></h2>
+<p>This module contains the deep learning architectures for both unsupervised integration (CDI-Basic) and sequence-to-embedding prediction (CDI-Generalised).</p>
+<h3 id="21-train_basic_cdi-cdi-basic">2.1 <code>train_basic_cdi</code> (CDI-Basic)<a class="headerlink" href="#21-train_basic_cdi-cdi-basic" title="Permanent link">&para;</a></h3>
+<p>Trains the unsupervised, multi-modal autoencoder on precomputed descriptor HDF5 files.</p>
+<p><strong>Python API:</strong>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ChemicalDice.training.basic_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_basic_cdi</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">model</span> <span class="o">=</span> <span class="n">train_basic_cdi</span><span class="p">(</span><span class="n">h5_file_paths</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;data/mordred.h5&quot;</span><span class="p">,</span> <span class="s2">&quot;data/mopac.h5&quot;</span><span class="p">],</span> <span class="n">num_epochs</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+</span></code></pre></div></p>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>h5_file_paths</code> (list): List of paths to descriptor <code>.h5</code> files.</li>
+<li><code>num_epochs</code> (int, default: <code>50</code>): Total training epochs.</li>
+<li><code>batch_size</code> (int, default: <code>32</code>): Batch size for DataLoader.</li>
+<li><code>learning_rate</code> (float, default: <code>0.001</code>): Initial learning rate for Adam optimizer.</li>
+</ul>
+<p><strong>Output:</strong> A trained PyTorch model capable of projecting specific modalities into the unified 8192-D CDI space.</p>
+<h3 id="22-train_generalised_cdi-cdi-generalised">2.2 <code>train_generalised_cdi</code> (CDI-Generalised)<a class="headerlink" href="#22-train_generalised_cdi-cdi-generalised" title="Permanent link">&para;</a></h3>
+<p>Trains the Mamba State-Space Model to predict 8192-D CDI embeddings directly from SMILES sequences.</p>
+<p><strong>Python API:</strong>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ChemicalDice.training.gen_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_generalised_cdi</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">model</span> <span class="o">=</span> <span class="n">train_generalised_cdi</span><span class="p">(</span><span class="n">csv_path</span><span class="o">=</span><span class="s2">&quot;smiles.csv&quot;</span><span class="p">,</span> <span class="n">target_h5_file</span><span class="o">=</span><span class="s2">&quot;targets.h5&quot;</span><span class="p">)</span>
+</span></code></pre></div></p>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>csv_path</code> (str): Path to CSV containing training SMILES.</li>
+<li><code>target_h5_file</code> (str): Path to the HDF5 file containing the ground-truth 8192-D embeddings generated by CDI-Basic.</li>
+<li><code>mamba_model_dir</code> (str): Directory containing pre-trained Mamba weights.</li>
+</ul>
+<p><strong>Output:</strong> A fine-tuned Mamba model capable of generating inference-time CDI embeddings directly from SMILES.</p>
+<hr />
+<h2 id="3-experiments-module-chemicaldiceexperiments">3. Experiments Module (<code>ChemicalDice.experiments</code>)<a class="headerlink" href="#3-experiments-module-chemicaldiceexperiments" title="Permanent link">&para;</a></h2>
+<p>This module houses automated benchmarking pipelines for robust evaluation.</p>
+<h3 id="31-run_ood_analysis-ood">3.1 <code>run_ood_analysis</code> (OOD)<a class="headerlink" href="#31-run_ood_analysis-ood" title="Permanent link">&para;</a></h3>
+<p>Executes Out-of-Distribution analysis using Random vs. Scaffold splitting strategies to test generalization.</p>
+<p><strong>Python API:</strong>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ChemicalDice.experiments.ood_analysis</span><span class="w"> </span><span class="kn">import</span> <span class="n">run_ood_analysis</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">run_ood_analysis</span><span class="p">(</span><span class="n">label_csv</span><span class="o">=</span><span class="s2">&quot;PCBA.csv&quot;</span><span class="p">,</span> <span class="n">embedding_files</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;PCBA_CDI.parquet&quot;</span><span class="p">],</span> <span class="n">results_dir</span><span class="o">=</span><span class="s2">&quot;./results&quot;</span><span class="p">)</span>
+</span></code></pre></div></p>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>label_csv</code> (str): Path to target labels CSV.</li>
+<li><code>embedding_files</code> (list): Paths to descriptor/embedding Parquet files.</li>
+<li><code>results_dir</code> (str): Output directory.</li>
+<li><code>resampling_strategy</code> (str, default: <code>"AUTO"</code>): How to handle class imbalance (<code>AUTO</code>, <code>DOWNSAMPLING</code>).</li>
+</ul>
+<p><strong>Output:</strong> <code>_random_metrics.csv</code> and <code>_scaffold_metrics.csv</code> reports containing ROC-AUC, Balanced Acc, F1, etc.</p>
+<h3 id="32-run_ldc_analysis-ldc">3.2 <code>run_ldc_analysis</code> (LDC)<a class="headerlink" href="#32-run_ldc_analysis-ldc" title="Permanent link">&para;</a></h3>
+<p>Executes Low Data Condition analysis across varying fractions of the training set (e.g., 10%, 25%).</p>
+<p><strong>Python API:</strong>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ChemicalDice.experiments.ldc_analysis</span><span class="w"> </span><span class="kn">import</span> <span class="n">run_ldc_analysis</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">run_ldc_analysis</span><span class="p">(</span><span class="n">dataset_name</span><span class="o">=</span><span class="s2">&quot;herg_karim&quot;</span><span class="p">,</span> <span class="n">emb_dir</span><span class="o">=</span><span class="s2">&quot;./&quot;</span><span class="p">,</span> <span class="n">label_dir</span><span class="o">=</span><span class="s2">&quot;./&quot;</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;results&quot;</span><span class="p">)</span>
+</span></code></pre></div></p>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>dataset_name</code> (str): Base name of the dataset.</li>
+<li><code>emb_dir</code> (str, default: <code>"."</code>): Directory containing embedding <code>.parquet</code> files.</li>
+<li><code>label_dir</code> (str, default: <code>"."</code>): Directory containing target label CSVs.</li>
+<li><code>output</code> (str, default: <code>"results_ldc"</code>): Output directory.</li>
+<li><code>fractions</code> (list, default: <code>[0.10, 0.25, 0.50, 0.75]</code>): List of data fractions to train on.</li>
+</ul>
+<p><strong>Output:</strong> <code>_ldc_results.csv</code> detailing the performance of multiple SOTA classifiers at restricted dataset scales.</p>
+<hr />
+<h2 id="4-sota-pipeline-module-chemicaldicesota_pipeline">4. SOTA Pipeline Module (<code>ChemicalDice.sota_pipeline</code>)<a class="headerlink" href="#4-sota-pipeline-module-chemicaldicesota_pipeline" title="Permanent link">&para;</a></h2>
+<p>This module provides a robust benchmarking framework for evaluating molecular embedding performance across multiple SOTA classifiers.</p>
+<h3 id="41-evaluatebenchmark">4.1 <code>Evaluate.benchmark</code><a class="headerlink" href="#41-evaluatebenchmark" title="Permanent link">&para;</a></h3>
+<p>Executes a 5-Fold Stratified Cross-Validation suite across 3 seeds, incorporating automated class balancing and metric calculation.</p>
+<p><strong>Python API:</strong>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ChemicalDice.sota_pipeline.Evaluate</span><span class="w"> </span><span class="kn">import</span> <span class="n">benchmark</span><span class="p">,</span> <span class="n">make_default_config</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">cfg</span> <span class="o">=</span> <span class="n">make_default_config</span><span class="p">()</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">cfg</span><span class="p">[</span><span class="s2">&quot;parquet_dir&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;./embeddings&quot;</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="n">cfg</span><span class="p">[</span><span class="s2">&quot;label_dir&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;./labels&quot;</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="c1"># Run the benchmark</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="n">benchmark</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
+</span></code></pre></div></p>
+<p><strong>CLI Execution:</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>cdi<span class="w"> </span>benchmark<span class="w"> </span>&lt;BASE_DIR&gt;<span class="w"> </span>&lt;DATASET_NAME&gt;<span class="w"> </span>&lt;TARGET_COLUMN&gt;
+</span></code></pre></div></p>
+<p><strong>Arguments (Config/CLI):</strong></p>
+<ul>
+<li><code>stages</code> (list): Pipeline stages to execute (<code>inspect</code>, <code>label</code>, <code>extract</code>, <code>analysis</code>, <code>classify</code>, <code>plots</code>, <code>all</code>).</li>
+<li><code>dataset_dir</code>, <code>label_dir</code>, <code>parquet_dir</code>, <code>results_dir</code> (str): Paths for data and output handling.</li>
+<li><code>descriptors</code> (list): Descriptors to evaluate.</li>
+<li><code>models</code> (list): Classifiers to benchmark (e.g., <code>XGBoost</code>, <code>RandomForest</code>).</li>
+</ul>
+<p><strong>Output:</strong> Robust evaluation metrics, checkpoint files, and publication-ready plots.</p>
+<hr />
+<h2 id="5-clustering-module-chemicaldiceclustering">5. Clustering Module (<code>ChemicalDice.clustering</code>)<a class="headerlink" href="#5-clustering-module-chemicaldiceclustering" title="Permanent link">&para;</a></h2>
+<p>This module provides advanced algorithms for reducing dataset redundancy and selecting representative subsets while maintaining structural diversity.</p>
+<h3 id="51-density_aware_sampling">5.1 <code>density_aware_sampling</code><a class="headerlink" href="#51-density_aware_sampling" title="Permanent link">&para;</a></h3>
+<p>Performs memory-efficient density-aware subset sampling using ECFP6 fingerprints, UMAP projection, and HDBSCAN clustering. It extracts a representative core of a large chemical library.</p>
+<p><strong>Python API:</strong>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># The density aware sampling is typically executed via CLI due to its heavy memory and GPU requirements.</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="c1"># See CLI usage below.</span>
+</span></code></pre></div></p>
+<p><strong>CLI Execution:</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>cdi<span class="w"> </span>cluster<span class="w"> </span>--input<span class="w"> </span>chembl_35_ecfp6.csv<span class="w"> </span>--target<span class="w"> </span><span class="m">0</span>.10<span class="w"> </span>--out_dir<span class="w"> </span>./sampled_results
+</span></code></pre></div></p>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>--input</code> (str): Input CSV containing SMILES and Fingerprints.</li>
+<li><code>--target</code> (float, default: <code>0.10</code>): Fraction of the dataset to sample (e.g., 0.10 for 10%).</li>
+<li><code>--umap_dims</code> (int, default: <code>30</code>): Dimensionality for UMAP reduction.</li>
+<li><code>--min_cluster_size</code> (int, default: <code>50</code>): Minimum cluster size for HDBSCAN.</li>
+<li><code>--work_dir</code>, <code>--out_dir</code> (str): Directories for checkpoints and final outputs.</li>
+</ul>
+<p><strong>Output:</strong> A CSV file (<code>representative_XXpct_hdbscan.csv</code>) containing the intelligently sampled molecular subset.</p>
+<hr />
+<h2 id="6-main-cli-hub-chemicaldicecli">6. Main CLI Hub (<code>ChemicalDice.cli</code>)<a class="headerlink" href="#6-main-cli-hub-chemicaldicecli" title="Permanent link">&para;</a></h2>
+<p>ChemicalDice exposes all core functionality via a unified <code>cdi</code> command-line interface.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Command</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Example Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>cdi compute</code></td>
+<td style="text-align: left;">Generate raw CSV descriptors from SMILES.</td>
+<td style="text-align: left;"><code>cdi compute --input data.csv --descriptors mordred</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>cdi convert</code></td>
+<td style="text-align: left;">Fuse CSVs into aligned, imputed HDF5 formats.</td>
+<td style="text-align: left;"><code>cdi convert --input_dir ./csv --output_dir ./h5</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>cdi train-basic</code></td>
+<td style="text-align: left;">Train the unsupervised multi-modal autoencoder.</td>
+<td style="text-align: left;"><code>cdi train-basic --data-files a.h5 b.h5 --epochs 50</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>cdi train-gen</code></td>
+<td style="text-align: left;">Fine-tune the sequence-to-embedding architecture.</td>
+<td style="text-align: left;"><code>cdi train-gen --smiles-csv smiles.csv --target-h5 out.h5</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>cdi ood</code></td>
+<td style="text-align: left;">Run SOTA/Scaffold Out-of-Distribution evaluation.</td>
+<td style="text-align: left;"><code>cdi ood --labels y.csv --embeddings x.parquet</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>cdi ldc</code></td>
+<td style="text-align: left;">Run fractional Low Data Condition evaluation.</td>
+<td style="text-align: left;"><code>cdi ldc --dataset pcba --fractions 0.1 0.25</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>cdi cluster</code></td>
+<td style="text-align: left;">Perform density-aware subset sampling.</td>
+<td style="text-align: left;"><code>cdi cluster --input data.csv --target 0.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>cdi benchmark</code></td>
+<td style="text-align: left;">Run the SOTA pipeline orchestrator.</td>
+<td style="text-align: left;"><code>cdi benchmark --stages all</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>cdi setup</code></td>
+<td style="text-align: left;">Automate installation of binary dependencies.</td>
+<td style="text-align: left;"><code>cdi setup</code></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../tutorials/basic_usage/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Basic Usage">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Basic Usage
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../r_api/" class="md-footer__link md-footer__link--next" aria-label="Next: R Package API">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                R Package API
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 The authors
+
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.top","navigation.tracking","search.highlight"],"search":"../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.66be65ca.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
