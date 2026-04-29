@@ -60,7 +60,7 @@ Open terminal or jupyter notebook run the following command to install all requi
 #### **3. Install the ChemicalDice Python Package**
 
 ```bash
-pip install -i https://test.pypi.org/simple/ ChemicalDice
+pip install ChemicalDice
 ```
 
 
