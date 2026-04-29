@@ -276,5 +276,5 @@ CDI Bot is a fully containerised, LLM-powered web application that gives researc
 
 > [!TIP]
 > **Watch the CDI Bot in action:**
-> <iframe width="100%" height="400" src="https://www.youtube.com/embed/3NaBBTviEsA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+> [![Watch the video](https://img.youtube.com/vi/3NaBBTviEsA/0.jpg)](https://www.youtube.com/watch?v=3NaBBTviEsA)
 
