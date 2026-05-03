@@ -22,10 +22,21 @@ from ChemicalDice.training.basic_model import train_basic_cdi
 model = train_basic_cdi(
     h5_file_paths=["data/mordred.h5", "data/Grover.h5"],
     num_epochs=50,
-    batch_size=32,
-    learning_rate=0.001
+    bottleneck=1024  # Reduce to 1024-D
 )
 ```
+
+### **Customizing Embedding Size (Bottleneck)**
+By default, ChemicalDice produces **8192-dimensional** embeddings. You can compress these into smaller, more manageable manifolds using the `--bottleneck` parameter. This is particularly useful for downstream tasks requiring lower memory footprints.
+
+*   **To 1024-D**: 
+    ```bash
+    cdi train-basic --data-files data/m1.h5 data/m2.h5 --bottleneck 1024
+    ```
+*   **To 512-D**: 
+    ```bash
+    cdi train-basic --data-files data/m1.h5 data/m2.h5 --bottleneck 512
+    ```
 
 * **Optimizer**: `Adam` (Initial LR: `0.001`, Weight Decay: `1e-4`)
 * **Scheduler**: `ReduceLROnPlateau` (factor=0.5, patience=3) tracking MSE loss.
@@ -41,8 +52,8 @@ This mode requires a mapping between raw SMILES and their corresponding 8192-D e
 
 #### **CLI Execution**
 ```bash
-# Fine-tune Mamba network against target CDI loss maps
-cdi train-gen --smiles-csv smiles.csv --target-h5 embeddings.h5 --mamba-dir ./cdi_generalised_model
+# Fine-tune Mamba network against target CDI loss maps (custom dim 1024)
+cdi train-gen --smiles-csv smiles.csv --target-h5 embeddings_1024.h5 --target-dim 1024
 ```
 
 #### **Python API**
@@ -68,8 +79,9 @@ model = train_generalised_cdi(
 
 CDI supports **flexible training configurations**, allowing you to select any number of descriptors for feature integration. You are not restricted to a fixed set; you can easily combine any subset of descriptors.
 
-### Replacement Descriptors
-These descriptors are also used during the replacement study. Here are some replacement descriptors:
+### Other Descriptors
+These descriptors can also be used in place of
+above 6 descriptors:
 
 * **Molformer** – Large-scale chemical language model trained on huge number of SMILES strings
 * **CLAMP** – CLAMP (Contrastive Language-Assay Molecule Pre-Training) is trained on molecule-bioassay pairs
