@@ -11,8 +11,8 @@ You can trigger the training via the CLI or Python API.
 
 #### **CLI Execution**
 ```bash
-# Execute training with specific HDF5 descriptor manifolds
-cdi train-basic --data-files data/mordred.h5 data/Grover.h5 --epochs 50
+# Execute training with the full 6-modality manifold
+cdi train-basic --data-files data_h5/mordred.h5 data_h5/Grover.h5 data_h5/Chemberta.h5 data_h5/Signaturizer.h5 data_h5/mopac.h5 data_h5/ImageMol.h5 --epochs 50
 ```
 
 #### **Python API**
@@ -20,7 +20,10 @@ cdi train-basic --data-files data/mordred.h5 data/Grover.h5 --epochs 50
 from ChemicalDice.training.basic_model import train_basic_cdi
 
 model = train_basic_cdi(
-    h5_file_paths=["data/mordred.h5", "data/Grover.h5"],
+    h5_file_paths=[
+        "data_h5/mordred.h5", "data_h5/Grover.h5", "data_h5/Chemberta.h5",
+        "data_h5/Signaturizer.h5", "data_h5/mopac.h5", "data_h5/ImageMol.h5"
+    ],
     num_epochs=50,
     bottleneck=1024  # Reduce to 1024-D
 )
@@ -31,15 +34,15 @@ By default, ChemicalDice produces **8192-dimensional** embeddings. You can compr
 
 *   **To 1024-D**: 
     ```bash
-    cdi train-basic --data-files data/m1.h5 data/m2.h5 --bottleneck 1024
+    cdi train-basic --data-files data_h5/mordred.h5 data_h5/Grover.h5 data_h5/Chemberta.h5 data_h5/Signaturizer.h5 data_h5/mopac.h5 data_h5/ImageMol.h5 --bottleneck 1024
     ```
 *   **To 512-D**: 
     ```bash
-    cdi train-basic --data-files data/m1.h5 data/m2.h5 --bottleneck 512
+    cdi train-basic --data-files data_h5/mordred.h5 data_h5/Grover.h5 data_h5/Chemberta.h5 data_h5/Signaturizer.h5 data_h5/mopac.h5 data_h5/ImageMol.h5 --bottleneck 512
     ```
 
-* **Optimizer**: `Adam` (Initial LR: `0.001`, Weight Decay: `1e-4`)
-* **Scheduler**: `ReduceLROnPlateau` (factor=0.5, patience=3) tracking MSE loss.
+* **Optimizer**: `SGD` (Initial LR: `0.001`, Weight Decay: `0`)
+* **Scheduler**: `ReduceLROnPlateau` (patience=5) tracking MSE loss.
 
 ---
 
