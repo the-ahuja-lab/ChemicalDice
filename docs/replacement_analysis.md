@@ -32,6 +32,7 @@ graph TD
 ## Overview & General Workflow
 
 For each pipeline, the workflow generally consists of:
+
 1. **Activating the relevant environment.**
 2. **Generating Data:** Running a bash script to launch the embedding/descriptor generation script (`run_*.sh`). Output is typically logged in a `logs_new/` directory.
 3. **Merging Chunks:** Merging the output chunks into a single `.npz` file (`merge_*_chunks.py`).

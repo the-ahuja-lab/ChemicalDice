@@ -25,6 +25,8 @@ model = train_basic_cdi(
         "data_h5/Signaturizer.h5", "data_h5/mopac.h5", "data_h5/ImageMol.h5"
     ],
     num_epochs=50,
+    model_path="cdi_model.pt",
+    embedding_path="cdi_embeddings.h5",
     bottleneck=1024  # Reduce to 1024-D
 )
 ```
@@ -56,7 +58,7 @@ This mode requires a mapping between raw SMILES and their corresponding 8192-D e
 #### **CLI Execution**
 ```bash
 # Fine-tune Mamba network against target CDI loss maps (custom dim 1024)
-cdi train-gen --smiles-csv smiles.csv --target-h5 embeddings_1024.h5 --target-dim 1024
+cdi train-gen --smiles-csv smiles.csv --target-h5 cdi_embeddings.h5 --target-dim 1024
 ```
 
 #### **Python API**
@@ -65,8 +67,7 @@ from ChemicalDice.training.gen_model import train_generalised_cdi
 
 model = train_generalised_cdi(
     csv_path="smiles.csv",
-    target_h5_file="embeddings.h5",
-    mamba_model_dir="./cdi_generalised_model"
+    target_h5_file="cdi_embeddings.h5"
 )
 ```
 

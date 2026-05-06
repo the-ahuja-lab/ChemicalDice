@@ -99,7 +99,9 @@ model = train_basic_cdi(
         "data_h5/mordred.h5", "data_h5/Grover.h5", "data_h5/Chemberta.h5",
         "data_h5/Signaturizer.h5", "data_h5/mopac.h5", "data_h5/ImageMol.h5"
     ],
-    num_epochs=50
+    num_epochs=50,
+    model_path="cdi_model.pt",
+    embedding_path="cdi_embeddings.h5"
 )
 ```
 
@@ -112,7 +114,7 @@ Learns to predict 8192-D CDI embeddings directly from SMILES sequences.
 **Via CLI:**
 ```bash
 # Fine-tune state-space network against 8192-D targets
-cdi train-gen --smiles-csv smiles.csv --target-h5 embeddings.h5 --mamba-dir ./cdi_generalised_model
+cdi train-gen --smiles-csv smiles.csv --target-h5 cdi_embeddings.h5 --mamba-dir ./cdi_generalised_model
 ```
 
 **Via Python:**
@@ -121,8 +123,7 @@ from ChemicalDice.training.gen_model import train_generalised_cdi
 
 model = train_generalised_cdi(
     csv_path="smiles.csv",
-    target_h5_file="embeddings.h5",
-    mamba_model_dir="./cdi_generalised_model"
+    target_h5_file="cdi_embeddings.h5"
 )
 ```
 
