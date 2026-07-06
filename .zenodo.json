@@ -1,0 +1,30 @@
+{
+  "title": "Chemical Dice Integrator (CDI)",
+  "upload_type": "software",
+  "description": "Chemical Dice Integrator is a deep learning framework for integrating heterogeneous molecular representations into a unified chemical embedding space for cheminformatics, bioinformatics, and AI-driven molecular discovery.",
+  "creators": [
+    {
+      "name": "Ahuja Lab",
+      "affiliation": "Ahuja Lab"
+    }
+  ],
+  "keywords": [
+    "cheminformatics",
+    "molecular representation learning",
+    "chemical embeddings",
+    "multimodal learning",
+    "drug discovery",
+    "bioinformatics"
+  ],
+  "license": "mit",
+  "access_right": "open",
+  "language": "eng",
+  "version": "1.0.0",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/the-ahuja-lab/ChemicalDice",
+      "relation": "isSupplementTo",
+      "resource_type": "software"
+    }
+  ]
+}
