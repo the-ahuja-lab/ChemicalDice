@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+title: "Chemical Dice Integrator (CDI)"
+message: "If you use Chemical Dice Integrator, please cite this software."
+type: software
+version: 1.0.0
+license: MIT
+repository-code: "https://github.com/the-ahuja-lab/ChemicalDice"
+abstract: "Chemical Dice Integrator is a deep learning framework for integrating heterogeneous molecular representations into a unified chemical embedding space for cheminformatics, bioinformatics, and AI-driven molecular discovery."
+authors:
+  - family-names: "Ahuja Lab"
+    name-particle: "the"
+keywords:
+  - cheminformatics
+  - molecular representation learning
+  - chemical embeddings
+  - multimodal learning
+  - drug discovery
